@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 plib_bg_count() {
-  _jobc="`jobs | grep -v "pwd" | wc -l | tr -d ' '`";
-  if [[ "$_jobc" != 0 ]]; then
-    echo -ne "[$_jobc]%f "
+  __jobc="`jobs | grep -v "pwd" | wc -l | tr -d ' '`";
+  if [[ "$__jobc" != 0 ]]; then
+    echo -ne "[$__jobc] "
   fi
-  unset _jobc
+  unset __jobc;
 }

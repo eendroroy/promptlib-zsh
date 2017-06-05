@@ -2,7 +2,7 @@
 
 source ${0:A:h}/modules.zsh
 
-for module in $MODULES
+for module in ${MODULES}
 do
   if [[ -f "${0:A:h}/modules/${module}.zsh" ]]
   then

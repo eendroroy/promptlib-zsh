@@ -10,13 +10,13 @@ plib_is_hg(){
 }
 
 plib_hg_branch(){
-  ref=$(hg branch 2> /dev/null) || return;
-  echo -ne "${ref}";
-  unset ref;
+  __ref=$(hg branch 2> /dev/null) || return;
+  echo -ne "${__ref}";
+  unset __ref;
 }
 
 plib_hg_rev(){
-  rev=$(hg identify --num 2>/dev/null | tr -d " +") || return;
-  echo -ne "${rev}";
-  unset rev;
+  __rev=$(hg identify --num 2>/dev/null | tr -d " +") || return;
+  echo -ne "${__rev}";
+  unset __rev;
 }
