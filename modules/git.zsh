@@ -2,15 +2,15 @@
 
 plib_is_git(){
   if [[ $(\git branch 2>/dev/null) != "" ]]; then
-    echo 1
+    echo -n 1
   else
-    echo 0
+    echo -n 0
   fi
 }
 
 plib_git_branch(){
   ref=$(\git symbolic-ref HEAD 2> /dev/null) || ref="detached" || return;
-  echo -ne "${ref#refs/heads/}";
+  echo -n "${ref#refs/heads/}";
   unset ref;
 }
 

@@ -3,9 +3,9 @@
 
 plib_is_svn(){
   if [[ $(svn info 2>/dev/null) != "" ]]; then
-    echo 1
+    echo -n 1
   else
-    echo 0
+    echo -n 0
   fi
  }
 
