@@ -3,8 +3,24 @@ promptlib-zsh
 
 collection of libraries for zsh prompts
 
-modules
--------
+usage
+-----
+
+add the library as a submodule:
+
+    git submodule add https://github.com/back-yard/promptlib-zsh.git libs/promptlib
+
+use modules in your theme:
+
+    THEME_ROOT=${0:A:h}
+    MODULES=(git ssh python) # skip this line to include all modules
+    source ${THEME_ROOT}/libs/promptlib/activate.zsh
+    
+    # rest of your theme
+
+
+available modules
+-----------------
 
 - git
 - mercurial
