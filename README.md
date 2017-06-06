@@ -8,7 +8,7 @@ usage
 
 add the library as a submodule:
 
-    git submodule add https://github.com/back-yard/promptlib-zsh.git libs/promptlib
+    git submodule add https://github.com/eendroroy/promptlib-zsh.git libs/promptlib
 
 use modules in your theme:
 
