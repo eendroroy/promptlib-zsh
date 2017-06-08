@@ -14,7 +14,7 @@ use modules in your theme:
 
     THEME_ROOT=${0:A:h}
     MODULES=(git ssh python) # skip this line to include all modules
-    source ${THEME_ROOT}/libs/promptlib/activate.zsh
+    source "${THEME_ROOT}/libs/promptlib/activate"
     
     # rest of your theme
 
