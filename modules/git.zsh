@@ -20,11 +20,27 @@ plib_git_rev(){
   unset __rev;
 }
 
+plib_git_remote_defined(){
+  if [ ! -z "`\git remote -v | head -1 | awk '{print $1}' | tr -d ' \n'`" ]; then
+    echo -ne 1
+  else
+    echo -ne 0
+  fi
+}
+
+plib_git_remote_name(){
+  if \git remote -v | grep origin > /dev/null; then
+    echo -ne "origin"
+  else
+    echo -ne "`\git remote -v | head -1 | awk '{print $1}' | tr -d " \n"`"
+  fi
+}
+
 plib_git_dirty(){
-  __mod=$(\git status --porcelain 2>/dev/null | grep 'M ' | wc -l | tr -d ' ');
-  __add=$(\git status --porcelain 2>/dev/null | grep 'A ' | wc -l | tr -d ' ');
-  __del=$(\git status --porcelain 2>/dev/null | grep 'D ' | wc -l | tr -d ' ');
-  __new=$(\git status --porcelain 2>/dev/null | grep '?? ' | wc -l | tr -d ' ');
+  __mod=$(\git status --porcelain 2>/dev/null | grep '^M \|^ M' | wc -l | tr -d ' ');
+  __add=$(\git status --porcelain 2>/dev/null | grep '^A \|^ A' | wc -l | tr -d ' ');
+  __del=$(\git status --porcelain 2>/dev/null | grep '^D \|^ D' | wc -l | tr -d ' ');
+  __new=$(\git status --porcelain 2>/dev/null | grep '^?? ' | wc -l | tr -d ' ');
   [[ "$__mod" != "0" ]] && echo -n " ⭑";
   [[ "$__add" != "0" ]] && echo -n " +";
   [[ "$__del" != "0" ]] && echo -n " -";
@@ -34,17 +50,19 @@ plib_git_dirty(){
 }
 
 plib_git_left_right(){
-  function _branch(){
-    __ref=$(\git symbolic-ref HEAD 2> /dev/null) || __ref="detached" || return;
-    echo -ne "${__ref#refs/heads/}";
-    unset __rev;
-  }
-  if [[ $(plib_git_branch) != "detached" ]]; then
-    __pull=$(\git rev-list --left-right --count `_branch`...origin/`_branch` 2>/dev/null | awk '{print $2}' | tr -d ' \n');
-    __push=$(\git rev-list --left-right --count `_branch`...origin/`_branch` 2>/dev/null | awk '{print $1}' | tr -d ' \n');
-    [[ "$__pull" != "0" ]] && [[ "$__pull" != "" ]] && echo -n " ▼";
-    [[ "$__push" != "0" ]] && [[ "$__push" != "" ]] && echo -n " ▲";
+  if [[ "$(plib_git_remote_defined)" == 1 ]]; then
+    function _branch(){
+      __ref=$(\git symbolic-ref HEAD 2> /dev/null) || __ref="detached" || return;
+      echo -ne "${__ref#refs/heads/}";
+      unset __rev;
+    }
+    if [[ $(plib_git_branch) != "detached" ]]; then
+      __pull=$(\git rev-list --left-right --count `_branch`...`plib_git_remote_name`/`_branch` 2>/dev/null | awk '{print $2}' | tr -d ' \n');
+      __push=$(\git rev-list --left-right --count `_branch`...`plib_git_remote_name`/`_branch` 2>/dev/null | awk '{print $1}' | tr -d ' \n');
+      [[ "$__pull" != "0" ]] && [[ "$__pull" != "" ]] && echo -n " ▼";
+      [[ "$__push" != "0" ]] && [[ "$__push" != "" ]] && echo -n " ▲";
 
-    unset __pull __push __branch
+      unset __pull __push __branch
+    fi
   fi
 }
