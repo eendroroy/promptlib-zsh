@@ -37,7 +37,7 @@ plib_git_remote_name(){
 }
 
 plib_git_dirty(){
-  __mod=$(\git status --porcelain 2>/dev/null | grep '^M \|^ M' | wc -l | tr -d ' ');
+  __mod=$(\git status --porcelain 2>/dev/null | grep '^M \|^ M\|^R \|^ R' | wc -l | tr -d ' ');
   __add=$(\git status --porcelain 2>/dev/null | grep '^A \|^ A' | wc -l | tr -d ' ');
   __del=$(\git status --porcelain 2>/dev/null | grep '^D \|^ D' | wc -l | tr -d ' ');
   __new=$(\git status --porcelain 2>/dev/null | grep '^?? ' | wc -l | tr -d ' ');
