@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ -z MODULES ]]
+if [[ -z "${MODULES}" ]]
 then
 MODULES=(
   git
