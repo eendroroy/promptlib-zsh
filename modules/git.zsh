@@ -80,6 +80,8 @@ plib_git_commit_since(){
     hours) __unit="H";;
     day) __unit="D";;
     days) __unit="D";;
+    week) __unit="W";;
+    weeks) __unit="W";;
     month) __unit="M";;
     months) __unit="M";;
     year) __unit="Y";;
