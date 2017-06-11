@@ -72,11 +72,17 @@ plib_git_commit_since(){
   __count=`echo $__commit_since | awk '{print $1}'`
   __unit=`echo $__commit_since | awk '{print $2}'`
   case $__unit in
+    second) __unit="S";;
     seconds) __unit="S";;
+    minute) __unit="Mi";;
     minutes) __unit="Mi";;
+    hour) __unit="H";;
     hours) __unit="H";;
+    day) __unit="D";;
     days) __unit="D";;
+    month) __unit="M";;
     months) __unit="M";;
+    year) __unit="Y";;
     years) __unit="Y";;
   esac
 
