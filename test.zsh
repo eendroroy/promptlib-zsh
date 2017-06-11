@@ -25,6 +25,8 @@ echo -ne "plib_git_dirty -> " && plib_git_dirty
 echo
 echo -ne "plib_git_left_right -> " && plib_git_left_right
 echo
+echo -ne "plib_git_commit_since -> " && plib_git_commit_since
+echo
 echo
 echo "  ==> mercurial"
 echo -ne "plib_is_hg -> " && plib_is_hg
