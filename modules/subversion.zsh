@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-
 plib_is_svn(){
   if [[ $(svn info 2>/dev/null) != "" ]]; then
     echo -n 1

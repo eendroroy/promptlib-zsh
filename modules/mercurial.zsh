@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-
 plib_is_hg(){
   if [[ $(hg branch 2>/dev/null) != "" ]]; then
     echo -n 1
