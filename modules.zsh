@@ -9,5 +9,6 @@ MODULES=(
   ssh
   background_job
   python
+  disk_info
 )
 fi
