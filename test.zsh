@@ -53,3 +53,15 @@ echo
 echo "  ==> background_job"
 echo -ne "plib_bg_count -> " && plib_bg_count
 echo
+echo
+echo "  ==> disk-info"
+echo -ne "plib_p_name -> " && plib_p_name
+echo
+echo -ne "plib_p_size -> " && plib_p_size
+echo
+echo -ne "plib_p_avail -> " && plib_p_avail
+echo
+echo -ne "plib_p_used -> " && plib_p_used
+echo
+echo -ne "plib_p_cap -> " && plib_p_cap
+echo
