@@ -55,13 +55,13 @@ echo -ne "plib_bg_count -> " && plib_bg_count
 echo
 echo
 echo "  ==> disk"
-echo -ne "plib_disk_name -> " && plib_p_name
+echo -ne "plib_disk_name -> " && plib_disk_name
 echo
-echo -ne "plib_disk_size -> " && plib_p_size
+echo -ne "plib_disk_size -> " && plib_disk_size
 echo
-echo -ne "plib_disk_avail -> " && plib_p_avail
+echo -ne "plib_disk_avail -> " && plib_disk_avail
 echo
-echo -ne "plib_disk_used -> " && plib_p_used
+echo -ne "plib_disk_used -> " && plib_disk_used
 echo
-echo -ne "plib_disk_cap -> " && plib_p_cap
+echo -ne "plib_disk_cap -> " && plib_disk_cap
 echo
