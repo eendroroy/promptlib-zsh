@@ -65,3 +65,11 @@ echo -ne "plib_disk_used -> " && plib_disk_used
 echo
 echo -ne "plib_disk_cap -> " && plib_disk_cap
 echo
+echo
+echo "  ==> time"
+echo -ne "plib_time -> " && plib_time
+echo
+echo -ne "plib_date -> " && plib_date
+echo
+echo -ne "plib_day -> " && plib_day
+echo

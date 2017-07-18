@@ -10,5 +10,6 @@ MODULES=(
   background_job
   python
   disk
+	time
 )
 fi
