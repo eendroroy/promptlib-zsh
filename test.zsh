@@ -54,7 +54,7 @@ echo "  ==> background_job"
 echo -ne "plib_bg_count -> " && plib_bg_count
 echo
 echo
-echo "  ==> disk-info"
+echo "  ==> disk"
 echo -ne "plib_p_name -> " && plib_p_name
 echo
 echo -ne "plib_p_size -> " && plib_p_size
