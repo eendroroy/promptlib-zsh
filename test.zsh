@@ -45,6 +45,10 @@ echo
 echo "  ==> ssh"
 echo -ne "plib_ssh_st -> " && plib_ssh_st
 echo
+echo -ne "plib_ssh_client_ip -> " && plib_ssh_client_ip
+echo
+echo -ne "plib_ssh_client_port -> " && plib_ssh_client_port
+echo
 echo
 echo "  ==> python"
 echo -ne "plib_venv -> " && plib_venv
