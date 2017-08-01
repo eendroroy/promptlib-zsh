@@ -68,27 +68,10 @@ plib_git_left_right(){
 }
 
 plib_git_commit_since(){
-  __commit_since=`git log -1 --format='%cr'`
-  __count=`echo $__commit_since | awk '{print $1}'`
-  __unit=`echo $__commit_since | awk '{print $2}'`
-  case $__unit in
-    second) __unit="S";;
-    seconds) __unit="S";;
-    minute) __unit="Mi";;
-    minutes) __unit="Mi";;
-    hour) __unit="H";;
-    hours) __unit="H";;
-    day) __unit="D";;
-    days) __unit="D";;
-    week) __unit="W";;
-    weeks) __unit="W";;
-    month) __unit="M";;
-    months) __unit="M";;
-    year) __unit="Y";;
-    years) __unit="Y";;
-  esac
+  __sedstr='s| year\(s\)\{0,1\}|Y|g;s| month\(s\)\{0,1\}|M|g;s| week\(s\)\{0,1\}|W|g;s| day\(s\)\{0,1\}|D|g;s| hour\(s\)\{0,1\}|H|g;s| minute\(s\)\{0,1\}|Mi|g;s| second\(s\)\{0,1\}|S|g'
+  __commit_since=`git log -1 --format='%cr' | sed ${__sedstr}`
 
-  echo -ne "${__count}${__unit}"
+  echo -ne "${__commit_since}"
 
-  unset __commit_since __count __unit
+  unset __commit_since __sedstr
 }
