@@ -9,7 +9,8 @@ MODULES=(
   ssh
   background_job
   python
+  ruby
   disk
-	time
+  time
 )
 fi
