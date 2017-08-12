@@ -7,3 +7,19 @@ plib_venv(){
     unset __venv
   fi
 }
+
+plib_python_version(){
+  which ruby > /dev/null && echo -ne `python --version 2>&1 | awk '{print $2}' | tr -d ' \n'`;
+}
+
+plib_python_major_version(){
+  which ruby > /dev/null && echo -ne `python --version 2>&1 | awk -F '[. ]' '{print $2}' | tr -d '\n'`;
+}
+
+plib_pyenv_version(){
+  which ruby > /dev/null && echo -ne `pyenv version | awk '{print $1}' | tr -d ' \n'`;
+}
+
+plib_pyenv_major_version(){
+  which ruby > /dev/null && echo -ne `pyenv version 2>&1 | awk -F '.' '/version/ {print $1}'`;
+}
