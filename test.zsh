@@ -9,7 +9,7 @@ do
     echo "${0:A:h}/modules/${module}.zsh"
     source "${0:A:h}/modules/${module}.zsh"
   else
-    echo "module: '${module}' not found"
+    echo "module: '${module}' not found" >&2
   fi
 done
 
