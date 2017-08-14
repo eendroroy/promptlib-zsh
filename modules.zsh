@@ -10,6 +10,7 @@ MODULES=(
   background_job
   python
   ruby
+  node
   disk
   time
 )

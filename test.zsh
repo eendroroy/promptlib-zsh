@@ -68,6 +68,12 @@ echo
 echo -ne "plib_rbenv_version -> " && plib_rbenv_version
 echo
 echo
+echo "  ==> node"
+echo -ne "plib_node_version -> " && plib_node_version
+echo
+echo -ne "plib_nodenv_version -> " && plib_nodenv_version
+echo
+echo
 echo "  ==> background_job"
 echo -ne "plib_bg_count -> " && plib_bg_count
 echo
