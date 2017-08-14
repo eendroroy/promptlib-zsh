@@ -77,6 +77,8 @@ echo -ne "plib_ruby_version -> " && plib_ruby_version
 echo
 echo -ne "plib_rbenv_version -> " && plib_rbenv_version
 echo
+echo -ne "plib_ruby_short_version -> " && plib_ruby_short_version
+echo
 echo
 echo "  ==> node"
 echo -ne "plib_node_version -> " && plib_node_version
