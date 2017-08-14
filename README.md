@@ -22,12 +22,14 @@ use modules in your theme:
 available modules
 -----------------
 
-- git
-- mercurial
-- subversion
-- ssh
 - background jobs
 - disk
+- git
+- java
+- mercurial
+- node
 - python
 - ruby
-- node
+- ssh
+- subversion
+
