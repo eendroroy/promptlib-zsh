@@ -62,6 +62,12 @@ echo
 echo -ne "plib_pyenv_major_version -> " && plib_pyenv_major_version
 echo
 echo
+echo "  ==> java"
+echo -ne "plib_java_version -> " && plib_java_version
+echo
+echo -ne "plib_java_major_version -> " && plib_java_major_version
+echo
+echo
 echo "  ==> ruby"
 echo -ne "plib_ruby_version -> " && plib_ruby_version
 echo

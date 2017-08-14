@@ -9,6 +9,7 @@ MODULES=(
   ssh
   background_job
   python
+  java
   ruby
   node
   disk
