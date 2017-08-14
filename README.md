@@ -27,4 +27,7 @@ available modules
 - subversion
 - ssh
 - background jobs
+- disk
 - python
+- ruby
+- node
