@@ -12,6 +12,7 @@ MODULES=(
   java
   ruby
   node
+  elixir
   disk
   time
 )
