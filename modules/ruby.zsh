@@ -9,5 +9,5 @@ plib_ruby_short_version(){
 }
 
 plib_rbenv_version(){
-  which ruby > /dev/null && echo -ne `rbenv version | awk '{print $1}' | tr -d ' \n'`;
+  which rbenv > /dev/null && echo -ne `rbenv version | awk '{print $1}' | tr -d ' \n'`;
 }

@@ -5,7 +5,7 @@ plib_node_version(){
 }
 
 plib_nodenv_version(){
-  which node > /dev/null && echo -ne `nodenv version | awk '{print $1}' | tr -d ' \n'`;
+  which nodenv > /dev/null && echo -ne `nodenv version | awk '{print $1}' | tr -d ' \n'`;
 }
 
 plib_node_major_version(){
@@ -13,5 +13,5 @@ plib_node_major_version(){
 }
 
 plib_nodenv_major_version(){
-  which node > /dev/null && echo -ne `nodenv version | awk -F. '{print $1}' | tr -d ' \n'`;
+  which nodenv > /dev/null && echo -ne `nodenv version | awk -F. '{print $1}' | tr -d ' \n'`;
 }
