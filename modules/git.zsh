@@ -75,3 +75,7 @@ plib_git_commit_since(){
 
   unset __commit_since __sedstr
 }
+
+plib_is_git_rebasing(){
+  [[ $(ls `git rev-parse --git-dir` | grep rebase) ]] && echo -ne 1 || echo -ne 0
+}
