@@ -59,8 +59,8 @@ plib_git_left_right(){
     if [[ $(plib_git_branch) != "detached" ]]; then
       __pull=$(\git rev-list --left-right --count `_branch`...`plib_git_remote_name`/`_branch` 2>/dev/null | awk '{print $2}' | tr -d ' \n');
       __push=$(\git rev-list --left-right --count `_branch`...`plib_git_remote_name`/`_branch` 2>/dev/null | awk '{print $1}' | tr -d ' \n');
-      [[ "$__pull" != "0" ]] && [[ "$__pull" != "" ]] && echo -n " ▼";
-      [[ "$__push" != "0" ]] && [[ "$__push" != "" ]] && echo -n " ▲";
+      [[ "$__pull" != "0" ]] && [[ "$__pull" != "" ]] && echo -n " ▼${__pull}";
+      [[ "$__push" != "0" ]] && [[ "$__push" != "" ]] && echo -n " ▲${__push}";
 
       unset __pull __push __branch
     fi
