@@ -37,9 +37,9 @@ plib_git_remote_name(){
 }
 
 plib_git_dirty(){
-  __mod=$(\git status --porcelain 2>/dev/null | grep '^M \|^ M\|^R \|^ R' | wc -l | tr -d ' ');
-  __add=$(\git status --porcelain 2>/dev/null | grep '^A \|^ A' | wc -l | tr -d ' ');
-  __del=$(\git status --porcelain 2>/dev/null | grep '^D \|^ D' | wc -l | tr -d ' ');
+  __mod=$(\git status --porcelain 2>/dev/null | grep '^M[A,M,D,R, ]\{1\}\|^[A,M,D,R, ]\{1\}M\|^R[A,M,D,R, ]\{1\}\|^[A,M,D,R, ]\{1\}R' | wc -l | tr -d ' ');
+  __add=$(\git status --porcelain 2>/dev/null | grep '^A[A,M,D,R, ]\{1\}\|^[A,M,D,R, ]\{1\}A' | wc -l | tr -d ' ');
+  __del=$(\git status --porcelain 2>/dev/null | grep '^D[A,M,D,R, ]\{1\}\|^[A,M,D,R, ]\{1\}D' | wc -l | tr -d ' ');
   __new=$(\git status --porcelain 2>/dev/null | grep '^?? ' | wc -l | tr -d ' ');
   [[ "$__mod" != "0" ]] && echo -n " ⭑";
   [[ "$__add" != "0" ]] && echo -n " +";
