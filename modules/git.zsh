@@ -74,7 +74,7 @@ plib_git_left_right(){
 }
 
 plib_git_commit_since(){
-  __sedstr='s| year\(s\)\{0,1\}|Y|g;s| month\(s\)\{0,1\}|M|g;s| week\(s\)\{0,1\}|W|g;s| day\(s\)\{0,1\}|D|g;s| hour\(s\)\{0,1\}|H|g;s| minute\(s\)\{0,1\}|Mi|g;s| second\(s\)\{0,1\}|S|g'
+  __sedstr='s| year\(s\)\{0,1\}|Y|g;s| month\(s\)\{0,1\}|Mo|g;s| week\(s\)\{0,1\}|W|g;s| day\(s\)\{0,1\}|D|g;s| hour\(s\)\{0,1\}|H|g;s| minute\(s\)\{0,1\}|Mi|g;s| second\(s\)\{0,1\}|S|g'
   __commit_since=`git log -1 --format='%cr' | sed ${__sedstr} | tr -d " ago\n"`
 
   echo -ne "${__commit_since}"
