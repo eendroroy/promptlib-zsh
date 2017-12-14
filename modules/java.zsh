@@ -5,5 +5,5 @@ plib_java_version(){
 }
 
 plib_java_major_version(){
-  which java > /dev/null && echo -ne `java -version 2>&1 | awk -F '["_.]' '/version/ {print $3}' | tr -d '\n'`;
+  which java > /dev/null && echo -ne `java -version 2>&1 | awk -F '["_.]' '/version/ {print $2}' | tr -d '\n'`;
 }
