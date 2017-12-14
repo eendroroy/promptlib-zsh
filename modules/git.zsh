@@ -55,7 +55,7 @@ plib_git_dirty(){
   [[ "$__del_ut" != "0" ]] && echo -n " ${PLIB_GIT_DEL_SYM_UT}";
   [[ "$__new_ut" != "0" ]] && echo -n " ${PLIB_GIT_NEW_SYM_UT}";
 
-  unset __mod __new __add __del
+  unset __mod_ut __new_ut __add_ut __mod_t __new_t __add_t __del
 }
 
 plib_git_left_right(){
