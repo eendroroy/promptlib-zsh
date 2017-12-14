@@ -37,20 +37,33 @@ plib_git_remote_name(){
 }
 
 plib_git_dirty(){
+
+  [[ -z "${PLIB_GIT_TRACKED_COLOR}" ]] && PLIB_GIT_TRACKED_COLOR=green
+  [[ -z "${PLIB_GIT_UNTRACKED_COLOR}" ]] && PLIB_GIT_UNTRACKED_COLOR=red
+
   [[ -z "${PLIB_GIT_ADD_SYM}" ]] && PLIB_GIT_ADD_SYM=+
   [[ -z "${PLIB_GIT_DEL_SYM}" ]] && PLIB_GIT_DEL_SYM=-
   [[ -z "${PLIB_GIT_MOD_SYM}" ]] && PLIB_GIT_MOD_SYM=⭑
   [[ -z "${PLIB_GIT_NEW_SYM}" ]] && PLIB_GIT_NEW_SYM=?
-  __mod=$(\git status --porcelain 2>/dev/null | grep '^M[A,M,D,R, ]\{1\}\|^[A,M,D,R, ]\{1\}M\|^R[A,M,D,R, ]\{1\}\|^[A,M,D,R, ]\{1\}R' | wc -l | tr -d ' ');
-  __add=$(\git status --porcelain 2>/dev/null | grep '^A[A,M,D,R, ]\{1\}\|^[A,M,D,R, ]\{1\}A' | wc -l | tr -d ' ');
-  __del=$(\git status --porcelain 2>/dev/null | grep '^D[A,M,D,R, ]\{1\}\|^[A,M,D,R, ]\{1\}D' | wc -l | tr -d ' ');
+  __mod_t=$(\git status --porcelain 2>/dev/null | grep '^M[A,M,D,R, ]\{1\} \|^R[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
+  __add_t=$(\git status --porcelain 2>/dev/null | grep '^A[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
+  __del_t=$(\git status --porcelain 2>/dev/null | grep '^D[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
+  
+  __mod_ut=$(\git status --porcelain 2>/dev/null | grep '^[A,M,D,R, ]\{1\}M \|^[A,M,D,R, ]\{1\}R ' | wc -l | tr -d ' ');
+  __add_ut=$(\git status --porcelain 2>/dev/null | grep '^[A,M,D,R, ]\{1\}A ' | wc -l | tr -d ' ');
+  __del_ut=$(\git status --porcelain 2>/dev/null | grep '^[A,M,D,R, ]\{1\}D ' | wc -l | tr -d ' ');
+  
   __new=$(\git status --porcelain 2>/dev/null | grep '^?? ' | wc -l | tr -d ' ');
-  [[ "$__mod" != "0" ]] && echo -n " ${PLIB_GIT_MOD_SYM}";
-  [[ "$__add" != "0" ]] && echo -n " ${PLIB_GIT_ADD_SYM}";
-  [[ "$__del" != "0" ]] && echo -n " ${PLIB_GIT_DEL_SYM}";
-  [[ "$__new" != "0" ]] && echo -n " ${PLIB_GIT_NEW_SYM}";
 
-  unset __mod __new __add __del
+  [[ "$__mod_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_MOD_SYM}%f";
+  [[ "$__mod_t" != "0" ]] && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_MOD_SYM}%f";
+  [[ "$__add_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_ADD_SYM}%f";
+  [[ "$__add_t" != "0" ]] && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_ADD_SYM}%f";
+  [[ "$__del_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_DEL_SYM}%f";
+  [[ "$__del_t" != "0" ]] && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_DEL_SYM}%f";
+  [[ "$__new" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_NEW_SYM}%f";
+
+  unset __mod_ut __new_ut __add_ut __mod_t __new_t __add_t __del
 }
 
 plib_git_left_right(){
