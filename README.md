@@ -1,10 +1,16 @@
-promptlib-zsh
-===============
+# promptlib-zsh
 
-collection of libraries for zsh prompts
+[![Contributors](https://img.shields.io/github/contributors/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/graphs/contributors)
+[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/eendroroy/promptlib-zsh/master.svg)](https://github.com/eendroroy/promptlib-zsh)
+[![license](https://img.shields.io/github/license/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/pulls)
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/pulls?q=is%3Apr+is%3Aclosed)
 
-usage
------
+Collection of libraries for zsh prompts
+
+## Usage
 
 add the library as a submodule:
 
@@ -19,8 +25,7 @@ use modules in your theme:
     # rest of your theme
 
 
-available modules
------------------
+## Available Modules
 
 - background jobs
 - disk
@@ -33,10 +38,11 @@ available modules
 - ssh
 - subversion
 
-configuration
--------------
+## Configurations
 
 ```bash
+# customize symbols
+
 export PLIB_GIT_ADD_SYM=+
 export PLIB_GIT_DEL_SYM=-
 export PLIB_GIT_MOD_SYM=⭑
@@ -44,4 +50,22 @@ export PLIB_GIT_NEW_SYM=?
 
 export PLIB_GIT_PUSH_SYM=↑
 export PLIB_GIT_PULL_SYM=↓
+
+# customize colors
+
+export PLIB_GIT_TRACKED_COLOR=green
+export PLIB_GIT_UNTRACKED_COLOR=red
 ```
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at [promptlib-zsh](https://github.com/eendroroy/promptlib-zsh) repository.
+This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Author
+
+* **indrajit** - *Owner* - [eendroroy](https://github.com/eendroroy)
+
+## License
+
+The project is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
