@@ -15,5 +15,6 @@ MODULES=(
   elixir
   disk
   time
+  go
 )
 fi

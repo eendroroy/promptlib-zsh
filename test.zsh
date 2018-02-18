@@ -121,3 +121,10 @@ echo -ne "plib_date -> " && plib_date
 echo
 echo -ne "plib_day -> " && plib_day
 echo
+echo
+echo
+echo "  ==> go"
+echo -ne "plib_go_version -> " && plib_go_version
+echo
+echo -ne "plib_goenv_version -> " && plib_goenv_version
+echo

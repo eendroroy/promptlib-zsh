@@ -27,9 +27,11 @@ use modules in your theme:
 
 ## Available Modules
 
-- background jobs
+- background_job
 - disk
+- elixir
 - git
+- go
 - java
 - mercurial
 - node
@@ -37,6 +39,7 @@ use modules in your theme:
 - ruby
 - ssh
 - subversion
+- time
 
 ## Configurations
 
