@@ -96,5 +96,5 @@ plib_git_commit_since(){
 }
 
 plib_is_git_rebasing(){
-  [[ $(ls `git rev-parse --git-dir` | grep rebase) ]] && echo -ne 1 || echo -ne 0
+  [[ $(ls `git rev-parse --git-dir` | grep rebase-apply) ]] && echo -ne 1 || echo -ne 0
 }
