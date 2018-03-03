@@ -128,3 +128,10 @@ echo -ne "plib_go_version -> " && plib_go_version
 echo
 echo -ne "plib_goenv_version -> " && plib_goenv_version
 echo
+echo
+echo
+echo "  ==> crystal"
+echo -ne "plib_crystal_version -> " && plib_crystal_version
+echo
+echo -ne "plib_crenv_version -> " && plib_crenv_version
+echo

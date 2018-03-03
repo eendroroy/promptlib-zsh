@@ -16,5 +16,6 @@ MODULES=(
   disk
   time
   go
+  crystal
 )
 fi
