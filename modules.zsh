@@ -3,19 +3,19 @@
 if [[ -z "${MODULES}" ]]
 then
 MODULES=(
-  git
-  mercurial
-  subversion
-  ssh
   background_job
-  python
-  java
-  ruby
-  node
-  elixir
-  disk
-  time
-  go
   crystal
+  disk
+  elixir
+  git
+  go
+  java
+  mercurial
+  node
+  python
+  ruby
+  ssh
+  subversion
+  time
 )
 fi
