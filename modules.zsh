@@ -12,6 +12,7 @@ MODULES=(
   java
   mercurial
   node
+  php
   python
   ruby
   ssh
