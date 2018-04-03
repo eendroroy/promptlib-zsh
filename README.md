@@ -35,6 +35,7 @@ use modules in your theme:
 - java
 - mercurial
 - node
+- php
 - python
 - ruby
 - ssh
