@@ -135,3 +135,7 @@ echo -ne "plib_crystal_version -> " && plib_crystal_version
 echo
 echo -ne "plib_crenv_version -> " && plib_crenv_version
 echo
+echo
+echo "  ==> php"
+echo -ne "plib_php_version -> " && plib_php_version
+echo
