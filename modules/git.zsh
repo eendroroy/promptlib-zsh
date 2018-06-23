@@ -45,13 +45,16 @@ plib_git_dirty(){
   [[ -z "${PLIB_GIT_DEL_SYM}" ]] && PLIB_GIT_DEL_SYM=-
   [[ -z "${PLIB_GIT_MOD_SYM}" ]] && PLIB_GIT_MOD_SYM=⭑
   [[ -z "${PLIB_GIT_NEW_SYM}" ]] && PLIB_GIT_NEW_SYM=?
-  __mod_t=$(\git status --porcelain 2>/dev/null | grep '^M[A,M,D,R, ]\{1\} \|^R[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
-  __add_t=$(\git status --porcelain 2>/dev/null | grep '^A[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
-  __del_t=$(\git status --porcelain 2>/dev/null | grep '^D[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
   
-  __mod_ut=$(\git status --porcelain 2>/dev/null | grep '^[A,M,D,R, ]\{1\}M \|^[A,M,D,R, ]\{1\}R ' | wc -l | tr -d ' ');
-  __add_ut=$(\git status --porcelain 2>/dev/null | grep '^[A,M,D,R, ]\{1\}A ' | wc -l | tr -d ' ');
-  __del_ut=$(\git status --porcelain 2>/dev/null | grep '^[A,M,D,R, ]\{1\}D ' | wc -l | tr -d ' ');
+  __git_st=$(\git status --porcelain 2>/dev/null)
+  
+  __mod_t=$(echo ${__git_st} | grep '^M[A,M,D,R, ]\{1\} \|^R[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
+  __add_t=$(echo ${__git_st} | grep '^A[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
+  __del_t=$(echo ${__git_st} | grep '^D[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ');
+  
+  __mod_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}M \|^[A,M,D,R, ]\{1\}R ' | wc -l | tr -d ' ');
+  __add_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}A ' | wc -l | tr -d ' ');
+  __del_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}D ' | wc -l | tr -d ' ');
   
   __new=$(\git status --porcelain 2>/dev/null | grep '^?? ' | wc -l | tr -d ' ');
 
