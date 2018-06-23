@@ -56,7 +56,7 @@ plib_git_dirty(){
   __add_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}A ' | wc -l | tr -d ' ');
   __del_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}D ' | wc -l | tr -d ' ');
   
-  __new=$(\git status --porcelain 2>/dev/null | grep '^?? ' | wc -l | tr -d ' ');
+  __new=$(echo ${__git_st} | grep '^?? ' | wc -l | tr -d ' ');
 
   [[ "$__add_t" != "0" ]]  && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_ADD_SYM}%f";
   [[ "$__add_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_ADD_SYM}%f";
