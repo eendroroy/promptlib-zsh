@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 plib_is_git(){
-  if [[ $(\git branch 2>/dev/null) != "" ]]; then
+  if [[ $(\git rev-parse --git-dir 2> /dev/null) != "" ]]; then
     echo -n 1
   else
     echo -n 0
@@ -79,19 +79,20 @@ plib_git_left_right(){
       unset __rev
     }
     if [[ $(plib_git_branch) != "detached" ]]; then
-      __pull=$(\git rev-list --left-right --count `_branch`...`plib_git_remote_name`/`_branch` 2>/dev/null | awk '{print $2}' | tr -d ' \n')
-      __push=$(\git rev-list --left-right --count `_branch`...`plib_git_remote_name`/`_branch` 2>/dev/null | awk '{print $1}' | tr -d ' \n')
+      __pp_stat=$(\git rev-list --left-right --count `_branch`...`plib_git_remote_name`/`_branch` 2>/dev/null)
+      __pull=$(echo ${__pp_stat} | awk '{print $2}' | tr -d ' \n')
+      __push=$(echo ${__pp_stat} | awk '{print $1}' | tr -d ' \n')
       [[ "$__pull" != "0" ]] && [[ "$__pull" != "" ]] && echo -n " ${__pull}${PLIB_GIT_PULL_SYM}"
       [[ "$__push" != "0" ]] && [[ "$__push" != "" ]] && echo -n " ${__push}${PLIB_GIT_PUSH_SYM}"
 
-      unset __pull __push __branch
+      unset __pp_stat __pull __push __branch
     fi
   fi
 }
 
 plib_git_commit_since(){
   __sedstr='s| year\(s\)\{0,1\}|Y|g;s| month\(s\)\{0,1\}|Mo|g;s| week\(s\)\{0,1\}|W|g;s| day\(s\)\{0,1\}|D|g;s| hour\(s\)\{0,1\}|H|g;s| minute\(s\)\{0,1\}|Mi|g;s| second\(s\)\{0,1\}|S|g'
-  __commit_since=`git log -1 --format='%cr' | sed ${__sedstr} | tr -d " ago\n"`
+  __commit_since=`\git log -1 --format='%cr' | sed ${__sedstr} | tr -d " ago\n"`
 
   echo -ne "${__commit_since}"
 
@@ -99,5 +100,5 @@ plib_git_commit_since(){
 }
 
 plib_is_git_rebasing(){
-  [[ $(ls `git rev-parse --git-dir` | grep rebase-apply) ]] && echo -ne 1 || echo -ne 0
+  [[ $(ls `\git rev-parse --git-dir` | grep rebase-apply) ]] && echo -ne 1 || echo -ne 0
 }
