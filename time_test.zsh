@@ -17,6 +17,7 @@ plib_git_dirty > /dev/null
 plib_git_left_right > /dev/null
 plib_git_commit_since > /dev/null
 plib_is_git_rebasing > /dev/null
+plib_git_stash > /dev/null
 plib_is_hg > /dev/null
 plib_hg_branch > /dev/null
 plib_hg_rev > /dev/null
