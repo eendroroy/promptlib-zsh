@@ -21,7 +21,7 @@ plib_git_rev(){
 }
 
 plib_git_remote_defined(){
-  if [ ! -z "`\git remote -v | head -1 | awk '{print $1}' | tr -d ' \n'`" ]; then
+  if [[ ! -z "`\git remote -v | head -1 | awk '{print $1}' | tr -d ' \n'`" ]]; then
     echo -ne 1
   else
     echo -ne 0
