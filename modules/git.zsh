@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 plib_is_git(){
-  if [[ $(\git rev-parse --git-dir 2> /dev/null) != "" ]]; then
+  if [[ $(\git rev-parse --git-dir 2>/dev/null) != "" ]]; then
     echo -n 1
   else
     echo -n 0
@@ -9,19 +9,19 @@ plib_is_git(){
 }
 
 plib_git_branch(){
-  __ref=$(\git symbolic-ref HEAD 2> /dev/null) || __ref="detached" || return
+  __ref=$(\git symbolic-ref HEAD 2>/dev/null) || __ref="detached" || return
   echo -n "${__ref#refs/heads/}"
   unset __ref
 }
 
 plib_git_rev(){
-  __rev=$(\git rev-parse HEAD | cut -c 1-7)
+  __rev=$(\git rev-parse HEAD 2>/dev/null | cut -c 1-7)
   echo -n "${__rev}"
   unset __rev
 }
 
 plib_git_remote_defined(){
-  if [[ ! -z "`\git remote -v | head -1 | awk '{print $1}' | tr -d ' \n'`" ]]; then
+  if [[ ! -z "$(\git remote -v | head -1 | awk '{print $1}' | tr -d ' \n')" ]]; then
     echo -ne 1
   else
     echo -ne 0
@@ -29,7 +29,7 @@ plib_git_remote_defined(){
 }
 
 plib_git_remote_name(){
-  if \git remote -v | grep origin > /dev/null; then
+  if \git remote -v | grep origin >/dev/null; then
     echo -ne "origin"
   else
     echo -ne "`\git remote -v | head -1 | awk '{print $1}' | tr -d " \n"`"
@@ -74,7 +74,7 @@ plib_git_left_right(){
   [[ -z "${PLIB_GIT_PULL_SYM}" ]] && PLIB_GIT_PULL_SYM=↓
   if [[ "$(plib_git_remote_defined)" == 1 ]]; then
     function _branch(){
-      __ref=$(\git symbolic-ref HEAD 2> /dev/null) || __ref="detached" || return
+      __ref=$(\git symbolic-ref HEAD 2>/dev/null) || __ref="detached" || return
       echo -ne "${__ref#refs/heads/}"
       unset __rev
     }
@@ -92,7 +92,7 @@ plib_git_left_right(){
 
 plib_git_commit_since(){
   __sedstr='s| year\(s\)\{0,1\}|Y|g;s| month\(s\)\{0,1\}|Mo|g;s| week\(s\)\{0,1\}|W|g;s| day\(s\)\{0,1\}|D|g;s| hour\(s\)\{0,1\}|H|g;s| minute\(s\)\{0,1\}|Mi|g;s| second\(s\)\{0,1\}|S|g'
-  __commit_since=`\git log -1 --format='%cr' | sed ${__sedstr} | tr -d " ago\n"`
+  __commit_since=$(\git log -1 --format='%cr' 2>/dev/null | sed ${__sedstr} | tr -d " ago\n")
 
   echo -ne "${__commit_since}"
 
@@ -104,5 +104,5 @@ plib_is_git_rebasing(){
 }
 
 plib_git_stash(){
-  echo -n `git stash list | wc -l`
+  echo -n $(\git stash list | wc -l)
 }
