@@ -70,8 +70,8 @@ plib_git_dirty(){
 }
 
 plib_git_left_right(){
-  [[ -z "${PLIB_GIT_PUSH_SYM}" ]] && PLIB_GIT_PUSH_SYM=↑
-  [[ -z "${PLIB_GIT_PULL_SYM}" ]] && PLIB_GIT_PULL_SYM=↓
+  [[ -z "${PLIB_GIT_PUSH_SYM}" ]] && PLIB_GIT_PUSH_SYM='↑'
+  [[ -z "${PLIB_GIT_PULL_SYM}" ]] && PLIB_GIT_PULL_SYM='↓'
   if [[ "$(plib_git_remote_defined)" == 1 ]]; then
     function _branch(){
       __ref=$(\git symbolic-ref HEAD 2>/dev/null) || __ref="detached" || return
@@ -92,11 +92,12 @@ plib_git_left_right(){
 
 plib_git_commit_since(){
   __sedstr='s| year\(s\)\{0,1\}|Y|g;s| month\(s\)\{0,1\}|Mo|g;s| week\(s\)\{0,1\}|W|g;s| day\(s\)\{0,1\}|D|g;s| hour\(s\)\{0,1\}|H|g;s| minute\(s\)\{0,1\}|Mi|g;s| second\(s\)\{0,1\}|S|g'
-  __commit_since=$(\git log -1 --format='%cr' 2>/dev/null | sed ${__sedstr} | tr -d " ago\n")
+  __commit_since_raw=$(\git log -1 --format='%cr' 2>/dev/null || echo '-0t')
+  __commit_since=$(echo ${__commit_since_raw} | sed ${__sedstr} | tr -d " ago\n")
 
   echo -ne "${__commit_since}"
 
-  unset __commit_since __sedstr
+  unset __commit_since __commit_since_raw __sedstr
 }
 
 plib_is_git_rebasing(){
