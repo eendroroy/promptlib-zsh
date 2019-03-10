@@ -8,6 +8,14 @@ plib_is_git(){
   fi
 }
 
+plib_git_is_bare(){
+  if [[ $(\git rev-parse --is-bare-repository 2>/dev/null) == "true" ]]; then
+    echo -n 1
+  else
+    echo -n 0
+  fi
+}
+
 plib_git_branch(){
   __ref=$(\git symbolic-ref HEAD 2>/dev/null) || __ref="detached" || return
   echo -n "${__ref#refs/heads/}"
