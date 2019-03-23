@@ -86,13 +86,10 @@ plib_git_left_right(){
       echo -ne "${__ref#refs/heads/}"
       unset __rev
     }
-    function _remote_branch(){
-      __remote_branch=$(\git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null) || return
-      echo -ne "${__remote_branch}"
-      unset __remote_branch
-    }
-    if [[ $(plib_git_branch) != "detached" ]]; then
-      __pp_stat=$(\git rev-list --left-right --count `_branch`...`_remote_branch`)
+    __remote_branch=$(\git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+
+    if [[ $(plib_git_branch) != "detached" ]] && [[ ${__remote_branch} != "" ]]; then
+      __pp_stat=$(\git rev-list --left-right --count `_branch`...`__remote_branch`)
       __pull=$(echo ${__pp_stat} | awk '{print $2}' | tr -d ' \n')
       __push=$(echo ${__pp_stat} | awk '{print $1}' | tr -d ' \n')
       [[ "$__pull" != "0" ]] && [[ "$__pull" != "" ]] && echo -n " ${__pull}${PLIB_GIT_PULL_SYM}"
