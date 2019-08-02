@@ -22,10 +22,9 @@ plib_git_branch(){
   unset __ref
 }
 
+# Gets the short SHA-1 of the current revision.
 plib_git_rev(){
-  __rev=$(\git rev-parse HEAD 2>/dev/null | cut -c 1-7)
-  echo -n "${__rev}"
-  unset __rev
+  git rev-parse HEAD 2>/dev/null | cut -c 1-7 | tr -d ' \n'
 }
 
 plib_git_remote_defined(){
