@@ -44,39 +44,54 @@ plib_git_remote_name(){
   fi
 }
 
-plib_git_dirty(){
+# For everything related to git status parsing please refer to this documentation:
+# https://git-scm.com/docs/git-status#_short_format
 
-  [[ -z "${PLIB_GIT_TRACKED_COLOR}" ]] && PLIB_GIT_TRACKED_COLOR=green
-  [[ -z "${PLIB_GIT_UNTRACKED_COLOR}" ]] && PLIB_GIT_UNTRACKED_COLOR=red
-
-  [[ -z "${PLIB_GIT_ADD_SYM}" ]] && PLIB_GIT_ADD_SYM=+
-  [[ -z "${PLIB_GIT_DEL_SYM}" ]] && PLIB_GIT_DEL_SYM=-
-  [[ -z "${PLIB_GIT_MOD_SYM}" ]] && PLIB_GIT_MOD_SYM=⭑
-  [[ -z "${PLIB_GIT_NEW_SYM}" ]] && PLIB_GIT_NEW_SYM=?
-  
-  __git_st=$(\git status --porcelain 2>/dev/null)
-  
-  __mod_t=$(echo ${__git_st} | grep '^M[A,M,D,R, ]\{1\} \|^R[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ')
-  __add_t=$(echo ${__git_st} | grep '^A[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ')
-  __del_t=$(echo ${__git_st} | grep '^D[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ')
-  
-  __mod_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}M \|^[A,M,D,R, ]\{1\}R ' | wc -l | tr -d ' ')
-  __add_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}A ' | wc -l | tr -d ' ')
-  __del_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}D ' | wc -l | tr -d ' ')
-  
-  __new=$(echo ${__git_st} | grep '^?? ' | wc -l | tr -d ' ')
-
-  [[ "$__add_t" != "0" ]]  && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_ADD_SYM}%f"
-  [[ "$__add_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_ADD_SYM}%f"
-  [[ "$__mod_t" != "0" ]]  && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_MOD_SYM}%f"
-  [[ "$__mod_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_MOD_SYM}%f"
-  [[ "$__del_t" != "0" ]]  && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_DEL_SYM}%f"
-  [[ "$__del_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_DEL_SYM}%f"
-  [[ "$__new" != "0" ]]    && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_NEW_SYM}%f"
-
-  unset __mod_ut __new_ut __add_ut __mod_t __new_t __add_t __del
+plib_git_status(){
+  echo -n "$(\git status --porcelain 2>/dev/null)"
 }
 
+# Returns the number of staged file modifications.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_staged_mod(){
+  echo -n "$1" | grep -c '^M[A,M,D,R, ]\{1\} \|^R[A,M,D,R, ]\{1\} ' | tr -d ' '
+}
+
+# Returns the number of unstaged file modifications.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_unstaged_mod(){
+  echo -n "$1" | grep -c '^[A,M,D,R, ]\{1\}M \|^[A,M,D,R, ]\{1\}R ' | tr -d ' '
+}
+
+# Returns the number of staged file deletions.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_staged_del(){
+  echo -n "$1" | grep -c '^D[A,M,D,R, ]\{1\} ' | tr -d ' '
+}
+
+# Returns the number of unstaged file deletions.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_unstaged_del(){
+  echo -n "$1" | grep -c '^[A,M,D,R, ]\{1\}D ' | tr -d ' '
+}
+
+# Returns the number of staged new files.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_staged_add(){
+  echo -n "$1" | grep -c '^A[A,M,D,R, ]\{1\} ' | tr -d ' '
+}
+
+# Returns the number of unstaged new files.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_unstaged_add(){
+  echo -n "$1" | grep -c '^[A,M,D,R, ]\{1\}A ' | tr -d ' '
+}
+
+# Returns the number of unstaged untracked files.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_status_new(){
+  echo -n "$1" | grep -c '^?? ' | tr -d ' '
+}
 plib_git_left_right(){
   [[ -z "${PLIB_GIT_PUSH_SYM}" ]] && PLIB_GIT_PUSH_SYM='↑'
   [[ -z "${PLIB_GIT_PULL_SYM}" ]] && PLIB_GIT_PULL_SYM='↓'
