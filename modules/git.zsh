@@ -129,7 +129,12 @@ plib_git_commit_since(){
 }
 
 plib_is_git_rebasing(){
-  [[ $(ls `\git rev-parse --git-dir` | grep rebase-apply) ]] && echo -ne 1 || echo -ne 0
+  if [[ -d "$(git rev-parse --git-path rebase-merge)" || \
+    -d "$(git rev-parse --git-path rebase-apply)" ]]; then
+    echo -n 1
+  else
+    echo -n 0
+  fi
 }
 
 plib_git_stash(){
