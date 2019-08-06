@@ -43,6 +43,8 @@ echo -ne "plib_git_status_new -> " && plib_git_status_new $STATUS
 echo
 unset STATUS
 
+echo -ne "plib_git_remote_is_defined -> " && plib_git_remote_is_defined remote
+echo
 echo -ne "plib_git_left_right -> " && plib_git_left_right
 echo
 echo -ne "plib_git_commit_since -> " && plib_git_commit_since

@@ -27,8 +27,8 @@ plib_git_rev(){
   git rev-parse HEAD 2>/dev/null | cut -c 1-7 | tr -d ' \n'
 }
 
-plib_git_remote_defined(){
-  if [[ ! -z "$(\git remote -v | head -1 | awk '{print $1}' | tr -d ' \n')" ]]; then
+plib_git_remote_is_defined(){
+  if [[ ! -z "$1" ]] && [[ "$(\git remote -v | grep -c $1)" -gt 0 ]]; then
     echo -ne 1
   else
     echo -ne 0
