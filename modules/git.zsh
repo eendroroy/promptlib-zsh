@@ -91,27 +91,31 @@ plib_git_unstaged_add(){
 plib_git_status_new(){
   echo -n "$1" | grep -c '^?? ' | tr -d ' '
 }
+
+# This determines how many commit behind or ahead of the target branch the current revision is.
+# https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---left-right
+#
+# It takes a remote name and a remote branch name as argument.
+# Directly returns the git rev-list --left-right value or an empty string if something went wrong.
 plib_git_left_right(){
-  [[ -z "${PLIB_GIT_PUSH_SYM}" ]] && PLIB_GIT_PUSH_SYM='↑'
-  [[ -z "${PLIB_GIT_PULL_SYM}" ]] && PLIB_GIT_PULL_SYM='↓'
-  if [[ "$(plib_git_remote_defined)" == 1 ]]; then
-    function _branch(){
-      __ref=$(\git symbolic-ref HEAD 2>/dev/null) || __ref="detached" || return
-      echo -ne "${__ref#refs/heads/}"
-      unset __rev
-    }
-    __remote_branch=$(\git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+  __remote_name="$1"
+  [[ -z "$__remote_name" ]] && __remote_name='origin'
 
-    if [[ $(plib_git_branch) != "detached" ]] && [[ ${__remote_branch} != "" ]]; then
-      __pp_stat=$(\git rev-list --left-right --count `_branch`...${__remote_branch})
-      __pull=$(echo ${__pp_stat} | awk '{print $2}' | tr -d ' \n')
-      __push=$(echo ${__pp_stat} | awk '{print $1}' | tr -d ' \n')
-      [[ "$__pull" != "0" ]] && [[ "$__pull" != "" ]] && echo -n " ${__pull}${PLIB_GIT_PULL_SYM}"
-      [[ "$__push" != "0" ]] && [[ "$__push" != "" ]] && echo -n " ${__push}${PLIB_GIT_PUSH_SYM}"
+  __local_branch_name=$(plib_git_branch)
+  
+  if [[ "$__local_branch_name" != "detached" ]]; then
 
-      unset __pp_stat __pull __push __branch
-    fi
+    __remote_branch_name="$2"
+    [[ -z "$__remote_branch_name" ]] && __remote_branch_name="$__local_branch_name"
+
+    git rev-list --left-right --count \
+      "refs/heads/${__local_branch_name}...refs/remotes/${__remote_name}/${__remote_branch_name}" \
+      2>/dev/null || echo ''
+
+    unset __remote_branch_name
   fi
+
+  unset __remote_name __local_branch_name
 }
 
 plib_git_commit_since(){
