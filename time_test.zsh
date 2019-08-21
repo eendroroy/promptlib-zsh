@@ -9,11 +9,19 @@ do
     source "${0:A:h}/modules/${module}.zsh"
   fi
 done
-
 plib_is_git > /dev/null
 plib_git_branch > /dev/null
 plib_git_rev > /dev/null
-plib_git_dirty > /dev/null
+STATUS="$(plib_git_status)" > /dev/null
+plib_git_staged_mod $STATUS > /dev/null
+plib_git_unstaged_mod $STATUS > /dev/null
+plib_git_staged_del $STATUS > /dev/null
+plib_git_unstaged_del $STATUS > /dev/null
+plib_git_staged_add $STATUS > /dev/null
+plib_git_unstaged_add $STATUS > /dev/null
+plib_git_status_new $STATUS > /dev/null
+unset STATUS > /dev/null
+plib_git_remote_is_defined remote > /dev/null
 plib_git_left_right > /dev/null
 plib_git_commit_since > /dev/null
 plib_is_git_rebasing > /dev/null
