@@ -22,14 +22,13 @@ plib_git_branch(){
   unset __ref
 }
 
+# Gets the short SHA-1 of the current revision.
 plib_git_rev(){
-  __rev=$(\git rev-parse HEAD 2>/dev/null | cut -c 1-7)
-  echo -n "${__rev}"
-  unset __rev
+  git rev-parse HEAD 2>/dev/null | cut -c 1-7 | tr -d ' \n'
 }
 
-plib_git_remote_defined(){
-  if [[ ! -z "$(\git remote -v | head -1 | awk '{print $1}' | tr -d ' \n')" ]]; then
+plib_git_remote_is_defined(){
+  if [[ ! -z "$1" ]] && [[ "$(\git remote -v | grep -c $1)" -gt 0 ]]; then
     echo -ne 1
   else
     echo -ne 0
@@ -44,60 +43,79 @@ plib_git_remote_name(){
   fi
 }
 
-plib_git_dirty(){
+# For everything related to git status parsing please refer to this documentation:
+# https://git-scm.com/docs/git-status#_short_format
 
-  [[ -z "${PLIB_GIT_TRACKED_COLOR}" ]] && PLIB_GIT_TRACKED_COLOR=green
-  [[ -z "${PLIB_GIT_UNTRACKED_COLOR}" ]] && PLIB_GIT_UNTRACKED_COLOR=red
-
-  [[ -z "${PLIB_GIT_ADD_SYM}" ]] && PLIB_GIT_ADD_SYM=+
-  [[ -z "${PLIB_GIT_DEL_SYM}" ]] && PLIB_GIT_DEL_SYM=-
-  [[ -z "${PLIB_GIT_MOD_SYM}" ]] && PLIB_GIT_MOD_SYM=⭑
-  [[ -z "${PLIB_GIT_NEW_SYM}" ]] && PLIB_GIT_NEW_SYM=?
-  
-  __git_st=$(\git status --porcelain 2>/dev/null)
-  
-  __mod_t=$(echo ${__git_st} | grep '^M[A,M,D,R, ]\{1\} \|^R[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ')
-  __add_t=$(echo ${__git_st} | grep '^A[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ')
-  __del_t=$(echo ${__git_st} | grep '^D[A,M,D,R, ]\{1\} ' | wc -l | tr -d ' ')
-  
-  __mod_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}M \|^[A,M,D,R, ]\{1\}R ' | wc -l | tr -d ' ')
-  __add_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}A ' | wc -l | tr -d ' ')
-  __del_ut=$(echo ${__git_st} | grep '^[A,M,D,R, ]\{1\}D ' | wc -l | tr -d ' ')
-  
-  __new=$(echo ${__git_st} | grep '^?? ' | wc -l | tr -d ' ')
-
-  [[ "$__add_t" != "0" ]]  && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_ADD_SYM}%f"
-  [[ "$__add_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_ADD_SYM}%f"
-  [[ "$__mod_t" != "0" ]]  && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_MOD_SYM}%f"
-  [[ "$__mod_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_MOD_SYM}%f"
-  [[ "$__del_t" != "0" ]]  && echo -n " %F{$PLIB_GIT_TRACKED_COLOR}${PLIB_GIT_DEL_SYM}%f"
-  [[ "$__del_ut" != "0" ]] && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_DEL_SYM}%f"
-  [[ "$__new" != "0" ]]    && echo -n " %F{$PLIB_GIT_UNTRACKED_COLOR}${PLIB_GIT_NEW_SYM}%f"
-
-  unset __mod_ut __new_ut __add_ut __mod_t __new_t __add_t __del
+plib_git_status(){
+  echo -n "$(\git status --porcelain 2>/dev/null)"
 }
 
+# Returns the number of staged file modifications.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_staged_mod(){
+  echo -n "$1" | grep -c '^M[A,M,D,R, ]\{1\} \|^R[A,M,D,R, ]\{1\} ' | tr -d ' '
+}
+
+# Returns the number of unstaged file modifications.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_unstaged_mod(){
+  echo -n "$1" | grep -c '^[A,M,D,R, ]\{1\}M \|^[A,M,D,R, ]\{1\}R ' | tr -d ' '
+}
+
+# Returns the number of staged file deletions.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_staged_del(){
+  echo -n "$1" | grep -c '^D[A,M,D,R, ]\{1\} ' | tr -d ' '
+}
+
+# Returns the number of unstaged file deletions.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_unstaged_del(){
+  echo -n "$1" | grep -c '^[A,M,D,R, ]\{1\}D ' | tr -d ' '
+}
+
+# Returns the number of staged new files.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_staged_add(){
+  echo -n "$1" | grep -c '^A[A,M,D,R, ]\{1\} ' | tr -d ' '
+}
+
+# Returns the number of unstaged new files.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_unstaged_add(){
+  echo -n "$1" | grep -c '^[A,M,D,R, ]\{1\}A ' | tr -d ' '
+}
+
+# Returns the number of unstaged untracked files.
+# Takes a 'git status --porcelain 2' value as argument.
+plib_git_status_new(){
+  echo -n "$1" | grep -c '^?? ' | tr -d ' '
+}
+
+# This determines how many commit behind or ahead of the target branch the current revision is.
+# https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---left-right
+#
+# It takes a remote name and a remote branch name as argument.
+# Directly returns the git rev-list --left-right value or an empty string if something went wrong.
 plib_git_left_right(){
-  [[ -z "${PLIB_GIT_PUSH_SYM}" ]] && PLIB_GIT_PUSH_SYM='↑'
-  [[ -z "${PLIB_GIT_PULL_SYM}" ]] && PLIB_GIT_PULL_SYM='↓'
-  if [[ "$(plib_git_remote_defined)" == 1 ]]; then
-    function _branch(){
-      __ref=$(\git symbolic-ref HEAD 2>/dev/null) || __ref="detached" || return
-      echo -ne "${__ref#refs/heads/}"
-      unset __rev
-    }
-    __remote_branch=$(\git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+  __remote_name="$1"
+  [[ -z "$__remote_name" ]] && __remote_name='origin'
 
-    if [[ $(plib_git_branch) != "detached" ]] && [[ ${__remote_branch} != "" ]]; then
-      __pp_stat=$(\git rev-list --left-right --count `_branch`...${__remote_branch})
-      __pull=$(echo ${__pp_stat} | awk '{print $2}' | tr -d ' \n')
-      __push=$(echo ${__pp_stat} | awk '{print $1}' | tr -d ' \n')
-      [[ "$__pull" != "0" ]] && [[ "$__pull" != "" ]] && echo -n " ${__pull}${PLIB_GIT_PULL_SYM}"
-      [[ "$__push" != "0" ]] && [[ "$__push" != "" ]] && echo -n " ${__push}${PLIB_GIT_PUSH_SYM}"
+  __local_branch_name=$(plib_git_branch)
+  
+  if [[ "$__local_branch_name" != "detached" ]]; then
 
-      unset __pp_stat __pull __push __branch
-    fi
+    __remote_branch_name="$2"
+    [[ -z "$__remote_branch_name" ]] && __remote_branch_name="$__local_branch_name"
+
+    git rev-list --left-right --count \
+      "refs/heads/${__local_branch_name}...refs/remotes/${__remote_name}/${__remote_branch_name}" \
+      2>/dev/null || echo ''
+
+    unset __remote_branch_name
   fi
+
+  unset __remote_name __local_branch_name
 }
 
 plib_git_commit_since(){
@@ -111,7 +129,12 @@ plib_git_commit_since(){
 }
 
 plib_is_git_rebasing(){
-  [[ $(ls `\git rev-parse --git-dir` | grep rebase-apply) ]] && echo -ne 1 || echo -ne 0
+  if [[ -d "$(git rev-parse --git-path rebase-merge)" || \
+    -d "$(git rev-parse --git-path rebase-apply)" ]]; then
+    echo -n 1
+  else
+    echo -n 0
+  fi
 }
 
 plib_git_stash(){

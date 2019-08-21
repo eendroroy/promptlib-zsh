@@ -44,22 +44,8 @@ use modules in your theme:
 
 ## Configurations
 
-```bash
-# customize symbols
+The library no longer formats data. You will have to make your own formating.
 
-export PLIB_GIT_ADD_SYM=+
-export PLIB_GIT_DEL_SYM=-
-export PLIB_GIT_MOD_SYM=⭑
-export PLIB_GIT_NEW_SYM=?
-
-export PLIB_GIT_PUSH_SYM=↑
-export PLIB_GIT_PULL_SYM=↓
-
-# customize colors
-
-export PLIB_GIT_TRACKED_COLOR=green
-export PLIB_GIT_UNTRACKED_COLOR=red
-```
 
 ## Contributing
 

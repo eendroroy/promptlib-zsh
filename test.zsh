@@ -21,7 +21,29 @@ echo -ne "plib_git_branch -> " && plib_git_branch
 echo
 echo -ne "plib_git_rev -> " && plib_git_rev
 echo
-echo -ne "plib_git_dirty -> " && plib_git_dirty
+
+# Git staus / git dirty tests
+echo "plib_git_status -> "
+STATUS="$(plib_git_status)"
+echo "$STATUS"
+echo
+echo -ne "plib_git_staged_mod -> " && plib_git_staged_mod $STATUS
+echo
+echo -ne "plib_git_unstaged_mod -> " && plib_git_unstaged_mod $STATUS
+echo
+echo -ne "plib_git_staged_del -> " && plib_git_staged_del $STATUS
+echo
+echo -ne "plib_git_unstaged_del -> " && plib_git_unstaged_del $STATUS
+echo
+echo -ne "plib_git_staged_add -> " && plib_git_staged_add $STATUS
+echo
+echo -ne "plib_git_unstaged_add -> " && plib_git_unstaged_add $STATUS
+echo
+echo -ne "plib_git_status_new -> " && plib_git_status_new $STATUS
+echo
+unset STATUS
+
+echo -ne "plib_git_remote_is_defined -> " && plib_git_remote_is_defined remote
 echo
 echo -ne "plib_git_left_right -> " && plib_git_left_right
 echo
