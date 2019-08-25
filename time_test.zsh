@@ -50,8 +50,10 @@ plib_rbenv_version > /dev/null
 plib_rbenv_major_minor_version > /dev/null
 plib_rbenv_major_version > /dev/null
 plib_node_version > /dev/null
-plib_nodenv_version > /dev/null
+plib_node_major_minor_version > /dev/null
 plib_node_major_version > /dev/null
+plib_nodenv_version > /dev/null
+plib_nodenv_major_minor_version > /dev/null
 plib_nodenv_major_version > /dev/null
 plib_elixir_version > /dev/null
 plib_exenv_version > /dev/null

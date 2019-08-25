@@ -115,9 +115,13 @@ echo
 echo "  ==> node"
 echo -ne "plib_node_version -> " && plib_node_version
 echo
-echo -ne "plib_nodenv_version -> " && plib_nodenv_version
+echo -ne "plib_node_major_minor_version -> " && plib_node_major_minor_version
 echo
 echo -ne "plib_node_major_version -> " && plib_node_major_version
+echo
+echo -ne "plib_nodenv_version -> " && plib_nodenv_version
+echo
+echo -ne "plib_nodenv_major_minor_version -> " && plib_nodenv_major_minor_version
 echo
 echo -ne "plib_nodenv_major_version -> " && plib_nodenv_major_version
 echo
