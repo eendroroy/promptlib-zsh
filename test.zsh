@@ -25,21 +25,21 @@ echo
 # Git staus / git dirty tests
 echo "plib_git_status -> "
 STATUS="$(plib_git_status)"
-echo "$STATUS"
+echo "${STATUS}"
 echo
-echo -ne "plib_git_staged_mod -> " && plib_git_staged_mod $STATUS
+echo -ne "plib_git_staged_mod -> " && plib_git_staged_mod "${STATUS}"
 echo
-echo -ne "plib_git_unstaged_mod -> " && plib_git_unstaged_mod $STATUS
+echo -ne "plib_git_unstaged_mod -> " && plib_git_unstaged_mod "${STATUS}"
 echo
-echo -ne "plib_git_staged_del -> " && plib_git_staged_del $STATUS
+echo -ne "plib_git_staged_del -> " && plib_git_staged_del "${STATUS}"
 echo
-echo -ne "plib_git_unstaged_del -> " && plib_git_unstaged_del $STATUS
+echo -ne "plib_git_unstaged_del -> " && plib_git_unstaged_del "${STATUS}"
 echo
-echo -ne "plib_git_staged_add -> " && plib_git_staged_add $STATUS
+echo -ne "plib_git_staged_add -> " && plib_git_staged_add "${STATUS}"
 echo
-echo -ne "plib_git_unstaged_add -> " && plib_git_unstaged_add $STATUS
+echo -ne "plib_git_unstaged_add -> " && plib_git_unstaged_add "${STATUS}"
 echo
-echo -ne "plib_git_status_new -> " && plib_git_status_new $STATUS
+echo -ne "plib_git_status_new -> " && plib_git_status_new "${STATUS}"
 echo
 unset STATUS
 
@@ -101,9 +101,15 @@ echo
 echo "  ==> ruby"
 echo -ne "plib_ruby_version -> " && plib_ruby_version
 echo
+echo -ne "plib_ruby_major_minor_version -> " && plib_ruby_major_minor_version
+echo
+echo -ne "plib_ruby_major_version -> " && plib_ruby_major_version
+echo
 echo -ne "plib_rbenv_version -> " && plib_rbenv_version
 echo
-echo -ne "plib_ruby_short_version -> " && plib_ruby_short_version
+echo -ne "plib_rbenv_major_minor_version -> " && plib_rbenv_major_minor_version
+echo
+echo -ne "plib_rbenv_major_version -> " && plib_rbenv_major_version
 echo
 echo
 echo "  ==> node"

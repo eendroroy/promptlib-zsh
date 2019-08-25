@@ -44,8 +44,11 @@ plib_pyenv_major_minor_version > /dev/null
 plib_java_version > /dev/null
 plib_java_major_version > /dev/null
 plib_ruby_version > /dev/null
+plib_ruby_major_minor_version > /dev/null
+plib_ruby_major_version > /dev/null
 plib_rbenv_version > /dev/null
-plib_ruby_short_version > /dev/null
+plib_rbenv_major_minor_version > /dev/null
+plib_rbenv_major_version > /dev/null
 plib_node_version > /dev/null
 plib_nodenv_version > /dev/null
 plib_node_major_version > /dev/null
