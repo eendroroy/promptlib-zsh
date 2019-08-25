@@ -13,13 +13,13 @@ plib_ruby_major_minor_version(){
 }
 
 plib_rbenv_version(){
-  command -v rbenv > /dev/null && echo -ne "$(rbenv version | awk '{print $1}' | tr -d ' \n')"
+  command -v rbenv > /dev/null && echo -ne "$(rbenv version-name | awk '{print $1}')"
 }
 
 plib_rbenv_major_version(){
-  command -v rbenv > /dev/null && echo -ne "$(rbenv version | awk -F'.' '{printf("%s",$1)}')"
+  command -v rbenv > /dev/null && echo -ne "$(rbenv version-name | awk -F'.' '{printf("%s",$1)}')"
 }
 
 plib_rbenv_major_minor_version(){
-  command -v rbenv > /dev/null && echo -ne "$(rbenv version | awk -F'.' '{printf("%s.%s",$1,$2)}')"
+  command -v rbenv > /dev/null && echo -ne "$(rbenv version-name | awk -F'.' '{printf("%s.%s",$1,$2)}')"
 }

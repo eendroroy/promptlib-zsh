@@ -17,13 +17,13 @@ plib_python_major_version(){
 }
 
 plib_pyenv_version(){
-  command -v pyenv > /dev/null && echo -ne "$(pyenv version | awk '{print $1}')"
+  command -v pyenv > /dev/null && echo -ne "$(pyenv version-name | awk '{print $1}')"
 }
 
 plib_pyenv_major_minor_version(){
-  command -v pyenv > /dev/null && echo -ne "$(pyenv version 2>&1 | awk -F '.' '/version/ {printf("%s.%s",$1,$2)}')"
+  command -v pyenv > /dev/null && echo -ne "$(pyenv version-name | awk -F '.' '{printf("%s.%s",$1,$2)}')"
 }
 
 plib_pyenv_major_version(){
-  command -v pyenv > /dev/null && echo -ne "$(pyenv version 2>&1 | awk -F '.' '/version/ {print $1}')"
+  command -v pyenv > /dev/null && echo -ne "$(pyenv version-name | awk -F '.' '{print $1}')"
 }

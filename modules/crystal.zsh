@@ -13,13 +13,13 @@ plib_crystal_major_version(){
 }
 
 plib_crenv_version(){
-  command -v crenv > /dev/null && echo -ne "$(crenv version | awk '{print $1}')"
+  command -v crenv > /dev/null && echo -ne "$(crenv version-name | awk '{print $1}')"
 }
 
 plib_crenv_major_minor_version(){
-  command -v crenv > /dev/null && echo -ne "$(crenv version | awk -F. '{print $1"."$2}')"
+  command -v crenv > /dev/null && echo -ne "$(crenv version-name | awk -F. '{print $1"."$2}')"
 }
 
 plib_crenv_major_version(){
-  command -v crenv > /dev/null && echo -ne "$(crenv version | awk -F. '{print $1}')"
+  command -v crenv > /dev/null && echo -ne "$(crenv version-name | awk -F. '{print $1}')"
 }

@@ -13,13 +13,13 @@ plib_node_major_version(){
 }
 
 plib_nodenv_version(){
-  command -v nodenv > /dev/null && echo -ne "$(nodenv version | awk '{print $1}')"
+  command -v nodenv > /dev/null && echo -ne "$(nodenv version-name | awk '{print $1}')"
 }
 
 plib_nodenv_major_minor_version(){
-  command -v nodenv > /dev/null && echo -ne "$(nodenv version | awk -F. '{print $1"."$2}')"
+  command -v nodenv > /dev/null && echo -ne "$(nodenv version-name | awk -F. '{print $1"."$2}')"
 }
 
 plib_nodenv_major_version(){
-  command -v nodenv > /dev/null && echo -ne "$(nodenv version | awk -F. '{print $1}')"
+  command -v nodenv > /dev/null && echo -ne "$(nodenv version-name | awk -F. '{print $1}')"
 }
