@@ -81,15 +81,15 @@ echo -ne "plib_venv -> " && plib_venv
 echo
 echo -ne "plib_python_version -> " && plib_python_version
 echo
+echo -ne "plib_python_major_minor_version -> " && plib_python_major_minor_version
+echo
 echo -ne "plib_python_major_version -> " && plib_python_major_version
 echo
 echo -ne "plib_pyenv_version -> " && plib_pyenv_version
 echo
-echo -ne "plib_pyenv_major_version -> " && plib_pyenv_major_version
-echo
-echo -ne "plib_python_major_minor_version -> " && plib_python_major_minor_version
-echo
 echo -ne "plib_pyenv_major_minor_version -> " && plib_pyenv_major_minor_version
+echo
+echo -ne "plib_pyenv_major_version -> " && plib_pyenv_major_version
 echo
 echo
 echo "  ==> java"

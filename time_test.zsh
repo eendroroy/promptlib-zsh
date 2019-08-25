@@ -36,11 +36,11 @@ plib_ssh_client_ip > /dev/null
 plib_ssh_client_port > /dev/null
 plib_venv > /dev/null
 plib_python_version > /dev/null
+plib_python_major_minor_version > /dev/null
 plib_python_major_version > /dev/null
 plib_pyenv_version > /dev/null
-plib_pyenv_major_version > /dev/null
-plib_python_major_minor_version > /dev/null
 plib_pyenv_major_minor_version > /dev/null
+plib_pyenv_major_version > /dev/null
 plib_java_version > /dev/null
 plib_java_major_version > /dev/null
 plib_ruby_version > /dev/null
