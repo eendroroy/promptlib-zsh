@@ -167,7 +167,15 @@ echo
 echo "  ==> crystal"
 echo -ne "plib_crystal_version -> " && plib_crystal_version
 echo
+echo -ne "plib_crystal_major_minor_version -> " && plib_crystal_major_minor_version
+echo
+echo -ne "plib_crystal_major_version -> " && plib_crystal_major_version
+echo
 echo -ne "plib_crenv_version -> " && plib_crenv_version
+echo
+echo -ne "plib_crenv_major_minor_version -> " && plib_crenv_major_minor_version
+echo
+echo -ne "plib_crenv_major_version -> " && plib_crenv_major_version
 echo
 echo
 echo "  ==> php"

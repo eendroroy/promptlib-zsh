@@ -69,7 +69,11 @@ plib_day > /dev/null
 plib_go_version > /dev/null
 plib_goenv_version > /dev/null
 plib_crystal_version > /dev/null
+plib_crystal_major_minor_version > /dev/null
+plib_crystal_major_version > /dev/null
 plib_crenv_version > /dev/null
+plib_crenv_major_minor_version > /dev/null
+plib_crenv_major_version > /dev/null
 plib_php_version > /dev/null
 plib_php_major_minor_version > /dev/null
 plib_php_major_version > /dev/null
