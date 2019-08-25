@@ -9,4 +9,3 @@ plib_java_major_version(){
   _version2=$(command -v java > /dev/null && echo -ne "$(java -version 2>&1 | awk -F '["_.]' '/version/ {print $3}')")
   [[ $_version1 == '1' ]] && echo -ne "$_version2" || echo -ne "$_version1"
 }
-s
