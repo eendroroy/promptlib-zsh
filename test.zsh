@@ -129,7 +129,15 @@ echo
 echo "  ==> elixir"
 echo -ne "plib_elixir_version -> " && plib_elixir_version
 echo
+echo -ne "plib_elixir_major_minor_version -> " && plib_elixir_major_minor_version
+echo
+echo -ne "plib_elixir_major_version -> " && plib_elixir_major_version
+echo
 echo -ne "plib_exenv_version -> " && plib_exenv_version
+echo
+echo -ne "plib_exenv_major_minor_version -> " && plib_exenv_major_minor_version
+echo
+echo -ne "plib_exenv_major_version -> " && plib_exenv_version
 echo
 echo
 echo "  ==> background_job"

@@ -56,7 +56,11 @@ plib_nodenv_version > /dev/null
 plib_nodenv_major_minor_version > /dev/null
 plib_nodenv_major_version > /dev/null
 plib_elixir_version > /dev/null
+plib_elixir_major_minor_version > /dev/null
+plib_elixir_major_version > /dev/null
 plib_exenv_version > /dev/null
+plib_exenv_major_minor_version > /dev/null
+plib_exenv_major_version > /dev/null
 plib_bg_count > /dev/null
 plib_disk_name > /dev/null
 plib_disk_size > /dev/null
