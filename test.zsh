@@ -169,3 +169,7 @@ echo
 echo "  ==> php"
 echo -ne "plib_php_version -> " && plib_php_version
 echo
+echo -ne "plib_php_major_minor_version -> " && plib_php_major_minor_version
+echo
+echo -ne "plib_php_major_version -> " && plib_php_major_version
+echo
