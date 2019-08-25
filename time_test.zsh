@@ -71,7 +71,11 @@ plib_time > /dev/null
 plib_date > /dev/null
 plib_day > /dev/null
 plib_go_version > /dev/null
+plib_go_major_minor_version > /dev/null
+plib_go_major_version > /dev/null
 plib_goenv_version > /dev/null
+plib_goenv_major_minor_version > /dev/null
+plib_goenv_major_version > /dev/null
 plib_crystal_version > /dev/null
 plib_crystal_major_minor_version > /dev/null
 plib_crystal_major_version > /dev/null

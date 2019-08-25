@@ -168,7 +168,15 @@ echo
 echo "  ==> go"
 echo -ne "plib_go_version -> " && plib_go_version
 echo
+echo -ne "plib_go_major_minor_version -> " && plib_go_major_minor_version
+echo
+echo -ne "plib_go_major_version -> " && plib_go_major_version
+echo
 echo -ne "plib_goenv_version -> " && plib_goenv_version
+echo
+echo -ne "plib_goenv_major_minor_version -> " && plib_goenv_major_minor_version
+echo
+echo -ne "plib_goenv_major_version -> " && plib_goenv_major_version
 echo
 echo
 echo
