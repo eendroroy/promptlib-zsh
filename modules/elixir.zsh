@@ -13,13 +13,13 @@ plib_elixir_major_version(){
 }
 
 plib_exenv_version(){
-  command -v exenv > /dev/null && echo -ne "$(exenv version | awk '{printf("%s", $1)}')"
+  command -v exenv > /dev/null && echo -ne "$(exenv version-name | awk '{printf("%s", $1)}')"
 }
 
 plib_exenv_major_minor_version(){
-  command -v exenv > /dev/null && echo -ne "$(exenv version | awk -F. '{printf("%s.%s", $1, $2)}')"
+  command -v exenv > /dev/null && echo -ne "$(exenv version-name | awk -F. '{printf("%s.%s", $1, $2)}')"
 }
 
 plib_exenv_major_version(){
-  command -v exenv > /dev/null && echo -ne "$(exenv version | awk -F. '{printf("%s", $1)}')"
+  command -v exenv > /dev/null && echo -ne "$(exenv version-name | awk -F. '{printf("%s", $1)}')"
 }

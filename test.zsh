@@ -137,7 +137,7 @@ echo -ne "plib_exenv_version -> " && plib_exenv_version
 echo
 echo -ne "plib_exenv_major_minor_version -> " && plib_exenv_major_minor_version
 echo
-echo -ne "plib_exenv_major_version -> " && plib_exenv_version
+echo -ne "plib_exenv_major_version -> " && plib_exenv_major_version
 echo
 echo
 echo "  ==> background_job"
