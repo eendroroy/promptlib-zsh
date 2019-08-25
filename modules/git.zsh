@@ -119,18 +119,25 @@ plib_git_left_right(){
 }
 
 plib_git_commit_since(){
-  __sedstr='s| year\(s\)\{0,1\}|Y|g;s| month\(s\)\{0,1\}|Mo|g;s| week\(s\)\{0,1\}|W|g;s| day\(s\)\{0,1\}|D|g;s| hour\(s\)\{0,1\}|H|g;s| minute\(s\)\{0,1\}|Mi|g;s| second\(s\)\{0,1\}|S|g'
+  __sed_year='s| year\(s\)\{0,1\}|Y|g'
+  __sed_month='s| month\(s\)\{0,1\}|Mo|g'
+  __sed_week='s| week\(s\)\{0,1\}|W|g'
+  __sed_day='s| day\(s\)\{0,1\}|D|g'
+  __sed_hour='s| hour\(s\)\{0,1\}|H|g'
+  __sed_minute='s| minute\(s\)\{0,1\}|Mi|g'
+  __sed_second='s| second\(s\)\{0,1\}|S|g'
+  __sedstr="${__sed_year};${__sed_month};${__sed_week};${__sed_day};${__sed_hour};${__sed_minute};${__sed_second}"
   __commit_since_raw=$(\git log -1 --format='%cr' 2>/dev/null || echo '-0t')
   __commit_since=$(echo "${__commit_since_raw}" | sed "${__sedstr}" | tr -d " ago\n")
 
   echo -ne "${__commit_since}"
 
   unset __commit_since __commit_since_raw __sedstr
+  unset __sed_year __sed_month __sed_week __sed_day __sed_hour __sed_minute __sed_second
 }
 
 plib_is_git_rebasing(){
-  if [[ -d "$(git rev-parse --git-path rebase-merge)" || \
-    -d "$(git rev-parse --git-path rebase-apply)" ]]; then
+  if [[ -d "$(git rev-parse --git-path rebase-merge)" || -d "$(git rev-parse --git-path rebase-apply)" ]]; then
     echo -n 1
   else
     echo -n 0
