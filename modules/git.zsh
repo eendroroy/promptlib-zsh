@@ -28,7 +28,7 @@ plib_git_rev(){
 }
 
 plib_git_remote_is_defined(){
-  if [[ ! -z "$1" ]] && [[ "$(\git remote -v | grep -c $1)" -gt 0 ]]; then
+  if [[ -n "$1" ]] && [[ "$(\git remote -v | grep -c "$1")" -gt 0 ]]; then
     echo -ne 1
   else
     echo -ne 0
@@ -39,7 +39,7 @@ plib_git_remote_name(){
   if \git remote -v | grep origin >/dev/null; then
     echo -ne "origin"
   else
-    echo -ne "`\git remote -v | head -1 | awk '{print $1}' | tr -d " \n"`"
+    echo -ne "$(\git remote -v | head -1 | awk '{print $1}')"
   fi
 }
 
@@ -121,7 +121,7 @@ plib_git_left_right(){
 plib_git_commit_since(){
   __sedstr='s| year\(s\)\{0,1\}|Y|g;s| month\(s\)\{0,1\}|Mo|g;s| week\(s\)\{0,1\}|W|g;s| day\(s\)\{0,1\}|D|g;s| hour\(s\)\{0,1\}|H|g;s| minute\(s\)\{0,1\}|Mi|g;s| second\(s\)\{0,1\}|S|g'
   __commit_since_raw=$(\git log -1 --format='%cr' 2>/dev/null || echo '-0t')
-  __commit_since=$(echo ${__commit_since_raw} | sed ${__sedstr} | tr -d " ago\n")
+  __commit_since=$(echo "${__commit_since_raw}" | sed "${__sedstr}" | tr -d " ago\n")
 
   echo -ne "${__commit_since}"
 
@@ -138,5 +138,5 @@ plib_is_git_rebasing(){
 }
 
 plib_git_stash(){
-  echo -n $(\git stash list | wc -l)
+  echo -n "$(\git stash list | wc -l)"
 }
