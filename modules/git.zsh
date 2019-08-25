@@ -145,5 +145,5 @@ plib_is_git_rebasing(){
 }
 
 plib_git_stash(){
-  echo -n "$(\git stash list | wc -l)"
+  echo -n "$(\git stash list | wc -l | tr -d ' ')"
 }
