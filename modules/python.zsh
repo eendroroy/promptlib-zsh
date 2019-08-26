@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 plib_venv(){
-  [[ -n "${VIRTUAL_ENV}" ]] && echo -n "($(basename \""$VIRTUAL_ENV"\"))"
+  [[ -n "${VIRTUAL_ENV}" ]] && echo -n "($(basename "$VIRTUAL_ENV"))"
 }
 
 plib_python_version(){
