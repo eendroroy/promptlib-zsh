@@ -85,3 +85,6 @@ plib_crenv_major_version > /dev/null
 plib_php_version > /dev/null
 plib_php_major_minor_version > /dev/null
 plib_php_major_version > /dev/null
+plib_docker_version > /dev/null
+plib_docker_major_minor_version > /dev/null
+plib_docker_major_version > /dev/null

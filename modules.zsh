@@ -6,6 +6,7 @@ MODULES=(
   background_job
   crystal
   disk
+  docker
   elixir
   git
   go

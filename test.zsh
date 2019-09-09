@@ -201,3 +201,11 @@ echo -ne "plib_php_major_minor_version -> " && plib_php_major_minor_version
 echo
 echo -ne "plib_php_major_version -> " && plib_php_major_version
 echo
+echo
+echo "  ==> docker"
+echo -ne "plib_docker_version -> " && plib_docker_version
+echo
+echo -ne "plib_docker_major_minor_version -> " && plib_docker_major_minor_version
+echo
+echo -ne "plib_docker_major_version -> " && plib_docker_major_version
+echo
