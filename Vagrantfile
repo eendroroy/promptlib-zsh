@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
             sudo apt-get install -y git zsh
             __line_num=$(grep -nr 'vagrant:' /etc/passwd | awk -F':' '{print $1}')
             sudo sed -i "${__line_num}s|/bin/bash|$(which zsh)|g" /etc/passwd
+            wget 'https://raw.githubusercontent.com/eendroroy/loki-bootstrap/master/recipes/docker.sh' -O - | bash
         SHELL
     end
 end
