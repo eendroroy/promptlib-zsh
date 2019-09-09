@@ -17,5 +17,5 @@ plib_docker_service_status(){
 }
 
 plib_docker_container_count(){
-  command -v docker > /dev/null && echo -ne "$(docker ps -q | wc -l | tr -d ' ')"
+  command -v docker > /dev/null && echo -ne "$(docker ps -q 2>/dev/null | wc -l | tr -d ' ')"
 }
