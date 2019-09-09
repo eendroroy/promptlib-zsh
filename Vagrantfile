@@ -17,10 +17,13 @@ Vagrant.configure("2") do |config|
 
         machine.vm.provision "shell", privileged: false, inline: <<-SHELL
             sudo apt-get update
-            sudo apt-get install -y git zsh
+            sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+            sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+            sudo apt-get install -y git zsh mysql-server
             __line_num=$(grep -nr 'vagrant:' /etc/passwd | awk -F':' '{print $1}')
             sudo sed -i "${__line_num}s|/bin/bash|$(which zsh)|g" /etc/passwd
             wget 'https://raw.githubusercontent.com/eendroroy/loki-bootstrap/master/recipes/docker.sh' -O - | bash
+            wget 'https://raw.githubusercontent.com/eendroroy/loki-bootstrap/master/recipes/vagrant.sh' -O - | bash
         SHELL
     end
 end
