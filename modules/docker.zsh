@@ -15,3 +15,7 @@ plib_docker_major_version(){
 plib_docker_service_status(){
   command -v docker > /dev/null && echo -ne "$(docker info >/dev/null 2>&1; echo $?)"
 }
+
+plib_docker_container_count(){
+  command -v docker > /dev/null && echo -ne "$(docker ps -q | wc -l | tr -d ' ')"
+}
