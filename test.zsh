@@ -221,3 +221,15 @@ echo -ne "plib_vagrant_major_minor_version -> " && plib_vagrant_major_minor_vers
 echo
 echo -ne "plib_vagrant_major_version -> " && plib_vagrant_major_version
 echo
+echo
+echo "  ==> mysqld"
+echo -ne "plib_mysqld_version -> " && plib_mysqld_version
+echo
+echo -ne "plib_mysqld_major_minor_version -> " && plib_mysqld_major_minor_version
+echo
+echo -ne "plib_mysqld_major_version -> " && plib_mysqld_major_version
+echo
+echo -ne "plib_mysqld_service_status_homebrew -> " && plib_mysqld_service_status_homebrew
+echo
+echo -ne "plib_mysqld_service_status_linux -> " && plib_mysqld_service_status_linux
+echo
