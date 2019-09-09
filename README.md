@@ -29,6 +29,7 @@ use modules in your theme:
 
 - background_job
 - disk
+- docker
 - elixir
 - git
 - go
@@ -41,6 +42,7 @@ use modules in your theme:
 - ssh
 - subversion
 - time
+- vagrant
 
 ## Configurations
 

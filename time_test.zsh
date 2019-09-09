@@ -90,3 +90,5 @@ plib_docker_major_minor_version > /dev/null
 plib_docker_major_version > /dev/null
 plib_docker_service_status > /dev/null
 plib_docker_container_count > /dev/null
+plib_vagrant_version > /dev/null
+plib_vagrant_major_version > /dev/null

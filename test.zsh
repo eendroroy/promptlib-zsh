@@ -213,3 +213,11 @@ echo -ne "plib_docker_service_status -> " && plib_docker_service_status
 echo
 echo -ne "plib_docker_container_count -> " && plib_docker_container_count
 echo
+echo
+echo "  ==> vagrant"
+echo -ne "plib_vagrant_version -> " && plib_vagrant_version
+echo
+echo -ne "plib_vagrant_major_minor_version -> " && plib_vagrant_major_minor_version
+echo
+echo -ne "plib_vagrant_major_version -> " && plib_vagrant_major_version
+echo

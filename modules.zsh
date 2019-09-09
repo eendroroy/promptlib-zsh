@@ -19,5 +19,6 @@ MODULES=(
   ssh
   subversion
   time
+  vagrant
 )
 fi
