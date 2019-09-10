@@ -15,6 +15,7 @@ MODULES=(
   mysql
   node
   php
+  postgres
   python
   ruby
   ssh

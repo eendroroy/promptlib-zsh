@@ -233,3 +233,15 @@ echo -ne "plib_mysql_service_status_homebrew -> " && plib_mysql_service_status_h
 echo
 echo -ne "plib_mysql_service_status_linux -> " && plib_mysql_service_status_linux
 echo
+echo
+echo "  ==> postgres"
+echo -ne "plib_postgres_version -> " && plib_postgres_version
+echo
+echo -ne "plib_postgres_major_minor_version -> " && plib_postgres_major_minor_version
+echo
+echo -ne "plib_postgres_major_version -> " && plib_postgres_major_version
+echo
+echo -ne "plib_postgres_service_status_homebrew -> " && plib_postgres_service_status_homebrew
+echo
+echo -ne "plib_postgres_service_status_linux -> " && plib_postgres_service_status_linux
+echo

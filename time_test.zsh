@@ -98,3 +98,8 @@ plib_mysql_major_minor_version > /dev/null
 plib_mysql_major_version > /dev/null
 plib_mysql_service_status_homebrew > /dev/null
 plib_mysql_service_status_linux > /dev/null
+plib_postgres_version > /dev/null
+plib_postgres_major_minor_version > /dev/null
+plib_postgres_major_version > /dev/null
+plib_postgres_service_status_homebrew > /dev/null
+plib_postgres_service_status_linux > /dev/null

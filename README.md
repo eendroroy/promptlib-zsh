@@ -38,6 +38,7 @@ use modules in your theme:
 - mysql
 - node
 - php
+- postgres
 - python
 - ruby
 - ssh
