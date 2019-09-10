@@ -12,7 +12,7 @@ MODULES=(
   go
   java
   mercurial
-  mysqld
+  mysql
   node
   php
   python

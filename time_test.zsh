@@ -93,8 +93,8 @@ plib_docker_container_count > /dev/null
 plib_vagrant_version > /dev/null
 plib_vagrant_major_minor_version > /dev/null
 plib_vagrant_major_version > /dev/null
-plib_mysqld_version > /dev/null
-plib_mysqld_major_minor_version > /dev/null
-plib_mysqld_major_version > /dev/null
-plib_mysqld_service_status_homebrew > /dev/null
-plib_mysqld_service_status_linux > /dev/null
+plib_mysql_version > /dev/null
+plib_mysql_major_minor_version > /dev/null
+plib_mysql_major_version > /dev/null
+plib_mysql_service_status_homebrew > /dev/null
+plib_mysql_service_status_linux > /dev/null
