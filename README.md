@@ -48,8 +48,7 @@ use modules in your theme:
 
 ## Configurations
 
-The library no longer formats data. You will have to make your own formating.
-
+The library no longer formats data. You will have to make your own formatting.
 
 ## Contributing
 
