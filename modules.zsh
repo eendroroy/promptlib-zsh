@@ -22,5 +22,6 @@ MODULES=(
   subversion
   time
   vagrant
+  gradle
 )
 fi
