@@ -4,12 +4,16 @@ plib_elixir_version(){
   command -v elixir > /dev/null && echo -ne "$(elixir -v | awk '/Elixir/ {printf("%s", $2)}')"
 }
 
+plib_elixir_major_version(){
+  command -v elixir > /dev/null && echo -ne "$(elixir -v | awk -F'[ .]' '/Elixir/ {printf("%s", $2)}')"
+}
+
 plib_elixir_major_minor_version(){
   command -v elixir > /dev/null && echo -ne "$(elixir -v | awk -F'[ .]' '/Elixir/ {printf("%s.%s", $2, $3)}')"
 }
 
-plib_elixir_major_version(){
-  command -v elixir > /dev/null && echo -ne "$(elixir -v | awk -F'[ .]' '/Elixir/ {printf("%s", $2)}')"
+plib_elixir_minor_version(){
+  command -v elixir > /dev/null && echo -ne "$(elixir -v | awk -F'[ .]' '/Elixir/ {printf("%s", $3)}')"
 }
 
 plib_exenv_version(){
