@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+plib_disk_summary(){
+  echo -ne "$(df -h . | tail -1 | awk '{print $1" -> "$(NF)" "$2" (U:"$3"|F:"$4")"}')";
+}
+
 plib_disk_name(){
   echo -ne "$(df -h . | tail -1 | awk '{print $1}')";
 }
