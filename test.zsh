@@ -47,6 +47,8 @@ echo -ne "plib_git_remote_is_defined -> " && plib_git_remote_is_defined remote
 echo
 echo -ne "plib_git_left_right -> " && plib_git_left_right
 echo
+echo -ne "plib_git_left_right_master -> " && plib_git_left_right_master
+echo
 echo -ne "plib_git_commit_since -> " && plib_git_commit_since
 echo
 echo -ne "plib_is_git_rebasing -> " && plib_is_git_rebasing

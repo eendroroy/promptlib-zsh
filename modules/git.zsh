@@ -118,6 +118,26 @@ plib_git_left_right(){
   unset __remote_name __local_branch_name
 }
 
+# This determines how many commit behind or ahead of the master branch the current branch is.
+# https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---left-right
+#
+# It takes a remote name as argument.
+# Directly returns the git rev-list --left-right value or an empty string if something went wrong.
+plib_git_left_right_master(){
+  __remote_name="$1"
+  [[ -z "$__remote_name" ]] && __remote_name='origin'
+
+  __local_branch_name=$(plib_git_branch)
+
+  if [[ "$__local_branch_name" != "detached" ]]; then
+    git rev-list --left-right --count \
+      "refs/heads/master...refs/remotes/${__remote_name}/${__local_branch_name}" \
+      2>/dev/null || echo ''
+  fi
+
+  unset __remote_name __local_branch_name
+}
+
 plib_git_commit_since(){
   __sed_year='s| year\(s\)\{0,1\}|Y|g'
   __sed_month='s| month\(s\)\{0,1\}|Mo|g'
