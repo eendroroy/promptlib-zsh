@@ -1,13 +1,5 @@
 # promptlib-zsh
 
-[![Contributors](https://img.shields.io/github/contributors/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/graphs/contributors)
-[![GitHub last commit (branch)](https://img.shields.io/github/last-commit/eendroroy/promptlib-zsh/master.svg)](https://github.com/eendroroy/promptlib-zsh)
-[![license](https://img.shields.io/github/license/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/issues)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/issues?q=is%3Aissue+is%3Aclosed)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/pulls)
-[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/eendroroy/promptlib-zsh.svg)](https://github.com/eendroroy/promptlib-zsh/pulls?q=is%3Apr+is%3Aclosed)
-
 Collection of libraries for zsh prompts
 
 ## Usage
@@ -54,10 +46,6 @@ The library no longer formats data. You will have to make your own formatting.
 
 Bug reports and pull requests are welcome on GitHub at [promptlib-zsh](https://github.com/eendroroy/promptlib-zsh) repository.
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## Author
-
-* **indrajit** - *Owner* - [eendroroy](https://github.com/eendroroy)
 
 ## License
 
