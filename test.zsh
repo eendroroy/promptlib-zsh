@@ -189,11 +189,19 @@ echo -ne "plib_crystal_major_minor_version -> " && plib_crystal_major_minor_vers
 echo
 echo -ne "plib_crystal_major_version -> " && plib_crystal_major_version
 echo
+echo -ne "plib_crystal_minor_version -> " && plib_crystal_minor_version
+echo
+echo -ne "plib_crystal_patch_version -> " && plib_crystal_patch_version
+echo
 echo -ne "plib_crenv_version -> " && plib_crenv_version
 echo
 echo -ne "plib_crenv_major_minor_version -> " && plib_crenv_major_minor_version
 echo
 echo -ne "plib_crenv_major_version -> " && plib_crenv_major_version
+echo
+echo -ne "plib_crenv_minor_version -> " && plib_crenv_minor_version
+echo
+echo -ne "plib_crenv_patch_version -> " && plib_crenv_patch_version
 echo
 echo
 echo "  ==> php"
@@ -210,6 +218,10 @@ echo
 echo -ne "plib_docker_major_minor_version -> " && plib_docker_major_minor_version
 echo
 echo -ne "plib_docker_major_version -> " && plib_docker_major_version
+echo
+echo -ne "plib_docker_minor_version -> " && plib_docker_minor_version
+echo
+echo -ne "plib_docker_patch_version -> " && plib_docker_patch_version
 echo
 echo -ne "plib_docker_service_status -> " && plib_docker_service_status
 echo
