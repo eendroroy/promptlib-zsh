@@ -38,10 +38,6 @@ use modules in your theme:
 - time
 - vagrant
 
-## Configurations
-
-The library no longer formats data. You will have to make your own formatting.
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at [promptlib-zsh](https://github.com/eendroroy/promptlib-zsh) repository.
