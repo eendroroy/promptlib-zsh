@@ -20,11 +20,13 @@ use modules in your theme:
 ## Available Modules
 
 - background_job
+- crystal
 - disk
 - docker
 - elixir
 - git
 - go
+- gradle
 - java
 - mercurial
 - mysql
@@ -38,10 +40,6 @@ use modules in your theme:
 - time
 - vagrant
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at [promptlib-zsh](https://github.com/eendroroy/promptlib-zsh) repository.
-This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
