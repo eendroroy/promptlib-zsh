@@ -28,6 +28,7 @@ use modules in your theme:
 - go
 - gradle
 - java
+- maven
 - mercurial
 - mysql
 - node

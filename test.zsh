@@ -259,3 +259,15 @@ echo -ne "plib_postgres_service_status_homebrew -> " && plib_postgres_service_st
 echo
 echo -ne "plib_postgres_service_status_linux -> " && plib_postgres_service_status_linux
 echo
+echo
+echo "  ==> maven"
+echo -ne "plib_maven_version -> " && plib_maven_version
+echo
+echo -ne "plib_maven_major_version -> " && plib_maven_major_version
+echo
+echo -ne "plib_maven_minor_version -> " && plib_maven_minor_version
+echo
+echo -ne "plib_maven_major_minor_version -> " && plib_maven_major_minor_version
+echo
+echo -ne "plib_maven_patch_version -> " && plib_maven_patch_version
+echo

@@ -10,7 +10,9 @@ MODULES=(
   elixir
   git
   go
+  gradle
   java
+  maven
   mercurial
   mysql
   node
@@ -22,6 +24,5 @@ MODULES=(
   subversion
   time
   vagrant
-  gradle
 )
 fi
