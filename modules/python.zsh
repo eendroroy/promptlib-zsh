@@ -14,7 +14,7 @@ plib_venv(){
 }
 
 plib_python_version(){
-  command -v $_PYTHON > /dev/null && echo -ne "$("$_PYTHON" --version 2>&1 | awk '{print $2}' | tr -d ' \n')"
+  command -v "$_PYTHON" > /dev/null && echo -ne "$("$_PYTHON" --version 2>&1 | awk '{print $2}' | tr -d ' \n')"
 }
 
 plib_python_major_minor_version(){
