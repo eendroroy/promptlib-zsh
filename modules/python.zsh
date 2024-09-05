@@ -5,7 +5,7 @@
 __python_executable_name() {
   if command -v python3 > /dev/null;
   then
-      # if is a 'python3', use that instead
+      # if there is a 'python3', use that instead of 'python'
       # this is typical on macOS
       echo "python3"
   else
