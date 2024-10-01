@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source ${0:A:h}/modules.zsh
+source "${0:A:h}/modules.zsh"
 
 for module in ${MODULES}
 do

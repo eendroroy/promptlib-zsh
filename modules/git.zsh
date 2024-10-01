@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 plib_is_git(){
+  command -v git > /dev/null || return
   if [[ $(\git rev-parse --git-dir 2>/dev/null) != "" ]]; then
     echo -n 1
   else
@@ -9,6 +10,7 @@ plib_is_git(){
 }
 
 plib_git_is_bare(){
+  command -v git > /dev/null || return
   if [[ $(\git rev-parse --is-bare-repository 2>/dev/null) == "true" ]]; then
     echo -n 1
   else
@@ -17,6 +19,7 @@ plib_git_is_bare(){
 }
 
 plib_git_branch(){
+  command -v git > /dev/null || return
   __ref=$(\git symbolic-ref HEAD 2>/dev/null) || __ref="detached" || return
   echo -n "${__ref#refs/heads/}"
   unset __ref
@@ -24,10 +27,12 @@ plib_git_branch(){
 
 # Gets the short SHA-1 of the current revision.
 plib_git_rev(){
+  command -v git > /dev/null || return
   git rev-parse HEAD 2>/dev/null | cut -c 1-7 | tr -d ' \n'
 }
 
 plib_git_remote_is_defined(){
+  command -v git > /dev/null || return
   if [[ -n "$1" ]] && [[ "$(\git remote -v | grep -c "$1")" -gt 0 ]]; then
     echo -ne 1
   else
@@ -36,6 +41,7 @@ plib_git_remote_is_defined(){
 }
 
 plib_git_remote_name(){
+  command -v git > /dev/null || return
   if \git remote -v | grep origin >/dev/null; then
     echo -ne "origin"
   else
@@ -47,6 +53,7 @@ plib_git_remote_name(){
 # https://git-scm.com/docs/git-status#_short_format
 
 plib_git_status(){
+  command -v git > /dev/null || return
   echo -n "$(\git status --porcelain 2>/dev/null)"
 }
 
@@ -98,6 +105,7 @@ plib_git_status_new(){
 # It takes a remote name and a remote branch name as argument.
 # Directly returns the git rev-list --left-right value or an empty string if something went wrong.
 plib_git_left_right(){
+  command -v git > /dev/null || return
   __remote_name="$1"
   [[ -z "$__remote_name" ]] && __remote_name='origin'
 
@@ -124,6 +132,7 @@ plib_git_left_right(){
 # It takes a remote name as argument.
 # Directly returns the git rev-list --left-right value or an empty string if something went wrong.
 plib_git_left_right_master(){
+  command -v git > /dev/null || return
   __remote_name="$1"
   [[ -z "$__remote_name" ]] && __remote_name='origin'
 
@@ -139,6 +148,7 @@ plib_git_left_right_master(){
 }
 
 plib_git_commit_since(){
+  command -v git > /dev/null || return
   __sed_year='s| year\(s\)\{0,1\}|Y|g'
   __sed_month='s| month\(s\)\{0,1\}|Mo|g'
   __sed_week='s| week\(s\)\{0,1\}|W|g'
@@ -157,6 +167,7 @@ plib_git_commit_since(){
 }
 
 plib_is_git_rebasing(){
+  command -v git > /dev/null || return
   if [[ -d "$(git rev-parse --git-path rebase-merge)" || -d "$(git rev-parse --git-path rebase-apply)" ]]; then
     echo -n 1
   else
@@ -165,5 +176,6 @@ plib_is_git_rebasing(){
 }
 
 plib_git_stash(){
+  command -v git > /dev/null || return
   echo -n "$(\git stash list | wc -l | tr -d ' ')"
 }
